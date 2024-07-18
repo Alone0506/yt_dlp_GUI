@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1130</width>
+    <height>826</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <pointsize>11</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Video Source</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #F0F4F4;
+    color: #2E7D32;
+}
+
+/* QLabel settings */
+QLabel {
+    color: #2E7D32;
+}
+
+/* QPushButton settings */
+QPushButton {
+    background-color: #A5D6A7;
+    border: 1px solid #81C784;
+    border-radius: 5px;
+    padding: 5px;
+}
+QPushButton:hover {
+    background-color: #81C784;
+}
+QPushButton:pressed {
+    background-color: #4CAF50;
+}
+
+/* QTableWidget settings */
+QTableWidget {
+    background-color: #FFFFFF;
+    alternate-background-color: #E8F5E9;  /* 表格的交替行背景颜色 */
+    gridline-color: #A5D6A7;   /* 網格線 */
+    selection-background-color: #A5D6A7;
+    border: 1px solid #81C784;
+}
+QTableWidget::item {
+    border: 1px solid #81C784;
+    padding: 2px;
+}
+QTableWidget::item::selected{
+    color:white;
+    background:#609d78;
+}
+QHeaderView::section {
+    background-color: #426c54;
+    color: white;
+    padding: 4px;
+    border: 1px solid #81C784;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="video_audio_lbl">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>Video &amp; Audio</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="video_audio_table">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>90</number>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>EXT</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>RESOLUTION</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>FPS</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>FILESIZE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>TBR</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>PROTOCOL</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>VCODEC</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>VBR</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ACODEC</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ABR</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="video_lbl">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>Video</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="video_table">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>90</number>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>EXT</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>RESOLUTION</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>FPS</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>FILESIZE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>TBR</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>PROTOCOL</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>VCODEC</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>VBR</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ACODEC</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ABR</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="audio_lbl">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>Audio</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="audio_table">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>90</number>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>EXT</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>RESOLUTION</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>FPS</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>FILESIZE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>TBR</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>PROTOCOL</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>VCODEC</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>VBR</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ACODEC</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ABR</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="default_lbl">
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ok_btn">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>OK !</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
