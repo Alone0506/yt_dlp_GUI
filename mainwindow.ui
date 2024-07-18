@@ -57,7 +57,7 @@ QTabWidget::pane {
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="download_tab">
        <property name="font">
@@ -195,7 +195,7 @@ QPushButton:hover:pressed{
             </widget>
            </item>
            <item row="1" column="0" colspan="2">
-            <widget class="QLineEdit" name="path_lineedit">
+            <widget class="QLineEdit" name="download_save_as_lineedit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -748,10 +748,10 @@ QPushButton:hover:pressed{
        <widget class="QGroupBox" name="groupBox">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>30</y>
-          <width>581</width>
-          <height>131</height>
+          <x>20</x>
+          <y>10</y>
+          <width>701</width>
+          <height>101</height>
          </rect>
         </property>
         <property name="font">
@@ -763,87 +763,68 @@ QPushButton:hover:pressed{
         <property name="title">
          <string>Step 1</string>
         </property>
-        <widget class="QPushButton" name="pushButton">
-         <property name="geometry">
-          <rect>
-           <x>474</x>
-           <y>50</y>
-           <width>91</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Choose File</string>
-         </property>
-        </widget>
-        <widget class="QPlainTextEdit" name="plainTextEdit">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>20</y>
-           <width>441</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="plainText">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>100</y>
-           <width>441</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="geometry">
-          <rect>
-           <x>474</x>
-           <y>100</y>
-           <width>91</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Save As...</string>
-         </property>
-        </widget>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <item row="0" column="1">
+          <widget class="QPushButton" name="choose_file_btn">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Choose File</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="video_path_lineedit">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>C:\Users\wii03\Desktop\video_downloader\conv\a.webm</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="save_as_btn">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Save As...</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="video_save_as_lineedit">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>C:\Users\wii03\Desktop\video_downloader\conv</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
        <widget class="QGroupBox" name="groupBox_2">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>170</y>
-          <width>581</width>
-          <height>341</height>
+          <x>20</x>
+          <y>130</y>
+          <width>701</width>
+          <height>421</height>
          </rect>
         </property>
         <property name="font">
@@ -855,108 +836,13 @@ QPushButton:hover:pressed{
         <property name="title">
          <string>Step 2</string>
         </property>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QGroupBox" name="flip_groupbox">
          <property name="geometry">
           <rect>
-           <x>190</x>
-           <y>30</y>
-           <width>151</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <item>
-          <property name="text">
-           <string>mp4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>m4v</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>webm</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>mkv</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>avi</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>mov</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>wmv</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>flv</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>asf</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>avchd</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>vob</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>gif</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label_3">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>30</y>
-           <width>151</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>choose output format</string>
-         </property>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_3">
-         <property name="geometry">
-          <rect>
-           <x>250</x>
-           <y>70</y>
-           <width>120</width>
-           <height>80</height>
+           <x>180</x>
+           <y>20</y>
+           <width>131</width>
+           <height>91</height>
           </rect>
          </property>
          <property name="font">
@@ -972,57 +858,47 @@ QPushButton:hover:pressed{
           <string>flip</string>
          </property>
          <property name="checkable">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="checked">
           <bool>false</bool>
          </property>
-         <widget class="QCheckBox" name="checkBox_4">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>30</y>
-            <width>73</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>left - right</string>
-          </property>
-         </widget>
-         <widget class="QCheckBox" name="checkBox_5">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>50</y>
-            <width>73</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>up - down</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="vertical_checkbox">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>vertical</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="horizontal_checkbox">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>horizontal</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
-        <widget class="QGroupBox" name="groupBox_4">
+        <widget class="QGroupBox" name="rotate_groupbox">
          <property name="geometry">
           <rect>
-           <x>400</x>
-           <y>70</y>
-           <width>141</width>
-           <height>80</height>
+           <x>330</x>
+           <y>20</y>
+           <width>131</width>
+           <height>91</height>
           </rect>
          </property>
          <property name="font">
@@ -1038,54 +914,66 @@ QPushButton:hover:pressed{
           <bool>false</bool>
          </property>
          <property name="checkable">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="checked">
           <bool>false</bool>
          </property>
-         <widget class="QLineEdit" name="lineEdit_4">
-          <property name="geometry">
-           <rect>
-            <x>60</x>
-            <y>20</y>
-            <width>71</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_7">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>30</y>
-            <width>47</width>
-            <height>12</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>angle</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>angle: </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="angle_lineedit">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="maxLength">
+             <number>3</number>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>°</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
-        <widget class="QGroupBox" name="groupBox_5">
+        <widget class="QGroupBox" name="resize_groupbox">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>70</y>
-           <width>211</width>
-           <height>80</height>
+           <x>30</x>
+           <y>20</y>
+           <width>131</width>
+           <height>89</height>
           </rect>
          </property>
          <property name="font">
@@ -1098,89 +986,73 @@ QPushButton:hover:pressed{
           <string>resize</string>
          </property>
          <property name="checkable">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="checked">
           <bool>false</bool>
          </property>
-         <widget class="QLineEdit" name="lineEdit_3">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>50</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_5">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>50</y>
-            <width>47</width>
-            <height>12</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="lineEdit_2">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>20</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_4">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>20</y>
-            <width>47</width>
-            <height>12</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Width: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="width_lineedit">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Height: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="height_lineedit">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
-        <widget class="QGroupBox" name="groupBox_6">
+        <widget class="QGroupBox" name="schematic_groupbox">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>170</y>
-           <width>511</width>
-           <height>141</height>
+           <x>10</x>
+           <y>130</y>
+           <width>681</width>
+           <height>281</height>
           </rect>
          </property>
          <property name="font">
@@ -1190,15 +1062,15 @@ QPushButton:hover:pressed{
           </font>
          </property>
          <property name="title">
-          <string>Schematic diagram</string>
+          <string>Preview</string>
          </property>
-         <widget class="QLabel" name="label_6">
+         <widget class="QLabel" name="before_lbl">
           <property name="geometry">
            <rect>
-            <x>40</x>
+            <x>10</x>
             <y>30</y>
-            <width>81</width>
-            <height>71</height>
+            <width>260</width>
+            <height>192</height>
            </rect>
           </property>
           <property name="font">
@@ -1207,15 +1079,18 @@ QPushButton:hover:pressed{
             <pointsize>11</pointsize>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string/>
           </property>
          </widget>
          <widget class="QLabel" name="label_8">
           <property name="geometry">
            <rect>
-            <x>200</x>
-            <y>50</y>
+            <x>300</x>
+            <y>100</y>
             <width>31</width>
             <height>31</height>
            </rect>
@@ -1233,13 +1108,13 @@ QPushButton:hover:pressed{
            <string/>
           </property>
          </widget>
-         <widget class="QLabel" name="label_9">
+         <widget class="QLabel" name="after_lbl">
           <property name="geometry">
            <rect>
-            <x>290</x>
+            <x>370</x>
             <y>30</y>
-            <width>81</width>
-            <height>71</height>
+            <width>260</width>
+            <height>192</height>
            </rect>
           </property>
           <property name="font">
@@ -1249,15 +1124,15 @@ QPushButton:hover:pressed{
            </font>
           </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string/>
           </property>
          </widget>
-         <widget class="QLabel" name="label_11">
+         <widget class="QLabel" name="before_size_lbl">
           <property name="geometry">
            <rect>
-            <x>60</x>
-            <y>110</y>
-            <width>81</width>
+            <x>70</x>
+            <y>240</y>
+            <width>91</width>
             <height>16</height>
            </rect>
           </property>
@@ -1268,16 +1143,130 @@ QPushButton:hover:pressed{
            </font>
           </property>
           <property name="text">
-           <string>640x480</string>
+           <string>1234 x 5678</string>
           </property>
          </widget>
-         <widget class="QLabel" name="label_12">
+         <widget class="QLabel" name="after_size_lbl">
           <property name="geometry">
            <rect>
-            <x>310</x>
-            <y>110</y>
+            <x>470</x>
+            <y>220</y>
+            <width>91</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>1234 x 5678</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="geometry">
+          <rect>
+           <x>470</x>
+           <y>20</y>
+           <width>201</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="title">
+          <string>output</string>
+         </property>
+         <widget class="QComboBox" name="ext_combobox">
+          <property name="geometry">
+           <rect>
+            <x>100</x>
+            <y>30</y>
+            <width>91</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <item>
+           <property name="text">
+            <string>mp4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>m4v</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>webm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>mkv</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>avi</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>mov</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>wmv</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>flv</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>asf</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>avchd</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>vob</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>gif</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>30</y>
             <width>71</width>
-            <height>16</height>
+            <height>20</height>
            </rect>
           </property>
           <property name="font">
@@ -1287,7 +1276,7 @@ QPushButton:hover:pressed{
            </font>
           </property>
           <property name="text">
-           <string>640x480</string>
+           <string>extension: </string>
           </property>
          </widget>
         </widget>
@@ -1296,9 +1285,9 @@ QPushButton:hover:pressed{
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>540</y>
+          <y>560</y>
           <width>561</width>
-          <height>80</height>
+          <height>62</height>
          </rect>
         </property>
         <property name="font">
@@ -1310,25 +1299,47 @@ QPushButton:hover:pressed{
         <property name="title">
          <string>Step 3</string>
         </property>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="geometry">
-          <rect>
-           <x>220</x>
-           <y>30</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Convert</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_14">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="convert_btn">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Convert</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_13">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
      </widget>
@@ -1341,11 +1352,24 @@ QPushButton:hover:pressed{
      <x>0</x>
      <y>0</y>
      <width>756</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+  </widget>
   <action name="zh_tw_action">
    <property name="text">
     <string>中文</string>

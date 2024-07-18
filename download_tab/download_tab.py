@@ -1,10 +1,11 @@
+from pathlib import Path
+
+import requests
+import markdown
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-import requests
-import markdown
-from pathlib import Path
 
 from .downloader import Downloader
 from mainwindow_ui import Ui_MainWindow
@@ -24,7 +25,7 @@ class DownloadTab:
         self.setup_tab()
         
     def setup_tab(self):
-        self.ui.path_lineedit.setText(str(Path(__file__).parent.absolute()))
+        self.ui.download_save_as_lineedit.setText(str(Path.cwd()))
         
         self.downloader.info_thread.finished.connect(self.info_thread_finished)
         self.downloader.video_thread.finished.connect(self.video_thread_finished)
@@ -56,7 +57,7 @@ class DownloadTab:
     def save_as(self):
         folder_path = QFileDialog.getExistingDirectory(caption="Save as...")
         if folder_path != "":
-            self.ui.path_lineedit.setText(folder_path)
+            self.ui.download_save_as_lineedit.setText(folder_path)
             
     def choose_video(self):
         self.video_subwindow.show()
@@ -66,7 +67,7 @@ class DownloadTab:
         
     def download(self):
         url = self.ui.url_lineedit.text()
-        path = self.ui.path_lineedit.text()
+        path = self.ui.download_save_as_lineedit.text()
         video_format = self.ui.format_lbl.text()
         self.downloader.video_thread.download(url, path, video_format)
         
@@ -143,7 +144,7 @@ class DownloadTab:
             QMessageBox.critical(None, 'ERR', 'Please check the error message in terminal and try again.')
             print('Download video fail.\n')
         url = self.ui.url_lineedit.text()
-        path = self.ui.path_lineedit.text()
+        path = self.ui.download_save_as_lineedit.text()
         self.downloader.subtitle_thread.download(url, path, self.subtitles_choose)
         
     def subtitle_thread_progress(self, is_success: bool, lang: str, format: str) -> None:

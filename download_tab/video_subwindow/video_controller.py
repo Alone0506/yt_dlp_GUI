@@ -6,6 +6,7 @@ from yt_dlp.YoutubeDL import format_bytes
 from .video_ui import Ui_Form as Ui_Video_Form
 
 class VideoSubWindow(QWidget):
+    # TODO: 精簡模式跟完整模式
     data_sent = pyqtSignal(str)
 
     def __init__(self):
@@ -135,6 +136,7 @@ class VideoSubWindow(QWidget):
             self.lock_table(self.ui.video_table)
             self.lock_table(self.ui.audio_table)
         else:
+            self.vide_audio_choose_id = ""
             self.unlock_table(self.ui.video_audio_table)
             self.unlock_table(self.ui.video_table)
             self.unlock_table(self.ui.audio_table)
