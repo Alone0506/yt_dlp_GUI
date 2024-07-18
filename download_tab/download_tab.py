@@ -34,10 +34,19 @@ class DownloadTab:
         self.subtitle_subwindow.data_sent.connect(self.show_subtitle_lang_format)
     
     def show_supported_sites(self):
-        with open('download_tab/supportedsites.md', 'r', encoding='utf-8') as f:
-            markdown_data = f.read()
-        html_data = markdown.markdown(markdown_data)  # Convert markdown to HTML
-        dialog = MarkdownViewerDialog(html_data)  # Create and show the MarkdownViewerDialog
+        url = 'https://raw.githubusercontent.com/yt-dlp/yt-dlp/2024.07.16/supportedsites.md'
+        error_html = '''
+            <html>
+            <head><title>Page Not Found</title></head>
+            <body>
+                <h1>Page Not Found</h1>
+                <p>The page you are looking for cannot be found. Please check the internet and try again.</p>
+            </body>
+            </html>
+        '''
+        response = requests.get(url)
+        html_data = markdown.markdown(response.text) if response.status_code == 200 else error_html
+        dialog = MarkdownViewerDialog(html_data)
         dialog.exec_()
     
     def get_info(self):
