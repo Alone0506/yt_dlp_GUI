@@ -23,7 +23,7 @@ class MainWindow(QMainWindow):
         self.ui.choose_subtitle_lang_format_btn.clicked.connect(self.download_tab.choose_subtitle)
         self.ui.download_btn.clicked.connect(self.download_tab.download)
         
-        # setting convert tab signal & slot 
+        # setting convert tab signal & slot
         self.convert_tab = ConvertTab(self.ui)
         self.ui.choose_file_btn.clicked.connect(self.convert_tab.choose_file)
         
