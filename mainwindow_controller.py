@@ -27,16 +27,18 @@ class MainWindow(QMainWindow):
         self.convert_tab = ConvertTab(self.ui)
         self.ui.choose_file_btn.clicked.connect(self.convert_tab.choose_file)
         
-        self.ui.width_lineedit.textEdited.connect(self.convert_tab.set_after_img)
-        self.ui.height_lineedit.textEdited.connect(self.convert_tab.set_after_img)
-        self.ui.vertical_checkbox.toggled.connect(self.convert_tab.set_after_img)
-        self.ui.horizontal_checkbox.toggled.connect(self.convert_tab.set_after_img)
-        self.ui.angle_lineedit.textEdited.connect(self.convert_tab.set_after_img)
+        self.ui.width_lineedit.textEdited.connect(self.convert_tab.resize)
+        self.ui.height_lineedit.textEdited.connect(self.convert_tab.resize)
+        self.ui.vertical_checkbox.toggled.connect(self.convert_tab.flip)
+        self.ui.horizontal_checkbox.toggled.connect(self.convert_tab.flip)
+        self.ui.left_rotate_btn.clicked.connect(lambda: self.convert_tab.rotate(90))
+        self.ui.right_rotate_btn.clicked.connect(lambda: self.convert_tab.rotate(-90))
         
         self.ui.convert_btn.clicked.connect(self.convert_tab.convert)
         
     def resizeEvent(self, event: QResizeEvent) -> None:
         self.download_tab.resize_thumbnail(event)
+        self.convert_tab.resize_preview(event)
         
 
 if __name__ == '__main__':

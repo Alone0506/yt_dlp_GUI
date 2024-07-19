@@ -1,211 +1,110 @@
-import os
 from pathlib import Path
 
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtGui import QIntValidator
-from moviepy.editor import VideoFileClip, vfx
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QLabel
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap, QResizeEvent, QIntValidator
 
 from mainwindow_ui import Ui_MainWindow
+from .convert import Video
 
 
 class ConvertTab:
     def __init__(self, main_ui: Ui_MainWindow):
         super().__init__()
         self.ui = main_ui
+        self.video = Video()
+        self.before = QPixmap()
+        self.after = QPixmap()
         self.setup_tab()
-        self.img_processing = ImgProcesser()
-        self.before_img = QPixmap()
         
     def setup_tab(self):
         self.ui.width_lineedit.setValidator(QIntValidator())
         self.ui.height_lineedit.setValidator(QIntValidator())
-        self.ui.angle_lineedit.setValidator(QIntValidator())
+        
+    def reset_step2_groupbox(self):
+        self.ui.width_lineedit.clear()
+        self.ui.height_lineedit.clear()
+        self.ui.vertical_checkbox.setChecked(False)
+        self.ui.horizontal_checkbox.setChecked(False)
+        self.ui.ext_combobox.setCurrentIndex(0)
+        # before_lbl, before_size_lbl, after_lbl, after_size_lbl, are not to
+        # clear, because they will be filled in with new values ​​soon.
+        
+    def get_support_exts(self) -> list[str]:
+        exts = [self.ui.ext_combobox.itemText(i) for i in range(self.ui.ext_combobox.count())]
+        return exts
         
     def choose_file(self):
-        # TODO: except handle
         video_path, _ = QFileDialog.getOpenFileName(caption="Open file")
         if video_path == "":
             return
+        if Path(video_path).suffix.lstrip('.') not in self.get_support_exts():
+            QMessageBox.critical(None, 'EXTENSION ERROR', 'This file is not supported.')
+            return
         self.ui.video_path_lineedit.setText(str(Path(video_path)))
         self.ui.video_save_as_lineedit.setText(str(Path(video_path).parent))
-        self.set_before_img()
-        self.set_placeholder()
-        self.set_after_img()
+        self.reset_step2_groupbox()
+        self.video = Video()
+        before_pixmap = self.video.init(str(Path(video_path)))
+        self.set_before_img(before_pixmap)
+        self.set_placeholder(before_pixmap)
+        self.set_after_img(before_pixmap)
+        self.ui.convert_btn.setEnabled(True)
         
-    def set_before_img(self):
-        """
-        Select the frame in the middle of the video as the preview image.
-        """
-        video = VideoFileClip(self.ui.video_path_lineedit.text())
-        middle_time = video.duration / 2
-        middle_img = video.get_frame(middle_time)
-        video.close()
-        
-        # transfer numpy array to QImage
-        height, width, channel = middle_img.shape
-        bytes_per_line = channel * width
-        qimage = QImage(middle_img.data, width, height, bytes_per_line, QImage.Format_BGR888).rgbSwapped()
-        
-        self.before_img = QPixmap().fromImage(qimage)
-        self.ui.before_size_lbl.setText(f'{self.before_img.width()} x {self.before_img.height()}')
-        pixmap = self.before_img.scaled(self.ui.before_lbl.size(), aspectRatioMode=Qt.KeepAspectRatio)
+    def set_before_img(self, before: QPixmap):
+        self.before = before
+        self.ui.before_size_lbl.setText(f'Before: {before.width()} x {before.height()}')
+        pixmap = before.scaled(self.ui.before_lbl.size(), aspectRatioMode=Qt.KeepAspectRatio)
         self.ui.before_lbl.setPixmap(pixmap)
         
-    def set_placeholder(self):
-        self.ui.width_lineedit.setPlaceholderText(str(self.before_img.width()))
-        self.ui.height_lineedit.setPlaceholderText(str(self.before_img.height()))
-        self.ui.angle_lineedit.setPlaceholderText('0')
+    def set_placeholder(self, before: QPixmap):
+        self.ui.width_lineedit.setPlaceholderText(str(before.width()))
+        self.ui.height_lineedit.setPlaceholderText(str(before.height()))
         
-    def new_video_size(self) -> tuple[int, int]:
+    def set_after_img(self, after: QPixmap):
+        self.after = after
+        self.ui.after_size_lbl.setText(f'After: {after.width()} x {after.height()}')
+        pixmap = after.scaled(self.ui.after_lbl.size(), aspectRatioMode=Qt.KeepAspectRatio)
+        self.ui.after_lbl.setPixmap(pixmap)
+        
+    def get_input_size(self) -> tuple[int, int]:
         width = self.ui.width_lineedit.text()
         width = self.ui.width_lineedit.placeholderText() if width == '' else width
         height = self.ui.height_lineedit.text()
         height = self.ui.height_lineedit.placeholderText() if height == '' else height
         return int(width), int(height)
-        
-    def new_video_flip_dir(self) -> tuple[bool, bool]:
-        # TODO: 看能不用moviepy取代
-        is_vertical_flip = self.ui.vertical_checkbox.isChecked()
-        is_horizontal_flip = self.ui.horizontal_checkbox.isChecked()
-        return is_vertical_flip, is_horizontal_flip
     
-    def new_video_rotate_angle(self) -> int:
-        angle = self.ui.angle_lineedit.text()
-        angle = self.ui.angle_lineedit.placeholderText() if angle == '' else angle
-        return int(angle)
+    def get_is_flip(self) -> tuple[bool, bool]:
+        is_x_flip = self.ui.vertical_checkbox.isChecked()
+        is_y_flip = self.ui.horizontal_checkbox.isChecked()
+        return is_x_flip, is_y_flip
         
-    def set_after_img(self):
-        pixmap = self.before_img
+    def resize(self) -> None:
+        width, height = self.get_input_size()
+        self.video.resize(width, height)
+        self.set_after_img(self.video.get_after_pixmap())
         
-        # resize
-        width, height = self.new_video_size()
-        pixmap = self.img_processing.resize(pixmap, width, height)
+    def flip(self) -> None:
+        is_x_flip, is_y_flip = self.get_is_flip()
+        self.video.flip(is_x_flip, is_y_flip)
+        self.set_after_img(self.video.get_after_pixmap())
         
-        # flip
-        is_vertical_flip, is_horizontal_flip = self.new_video_flip_dir()
-        pixmap = self.img_processing.flip(pixmap, is_vertical_flip, is_horizontal_flip)
-        
-        # rotate
-        angle = self.new_video_rotate_angle()
-        pixmap = self.img_processing.rotate(pixmap, angle)
-        
-        self.ui.after_size_lbl.setText(f'{pixmap.width()} x {pixmap.height()}')
-        pixmap = pixmap.scaled(self.ui.after_lbl.size(), aspectRatioMode=Qt.KeepAspectRatio)
-        self.ui.after_lbl.setPixmap(pixmap)
+    def rotate(self, angle: int) -> None:
+        self.video.rotate(angle)
+        self.set_after_img(self.video.get_after_pixmap())
         
     def convert(self):
-        video = VideoFileClip(self.ui.video_path_lineedit.text())
-        video_processer = VideoProcesser()
-        
-        # # resize
-        # width, height = self.new_video_size()
-        # video = video_processer.resize(width, height)
-        
-        # # flip
-        # is_vertical_flip, is_horizontal_flip = self.new_video_flip_dir()
-        # video = video_processer.flip(video, is_vertical_flip, is_horizontal_flip)
-        
-        # # rotate
-        # angle = self.new_video_rotate_angle()
-        # video = video_processer.rotate(angle)
-        
-        # convert
         output_path = self.ui.video_save_as_lineedit.text()
         file_name = Path(self.ui.video_path_lineedit.text()).stem
         ext = self.ui.ext_combobox.currentText()
         full_path = str(Path(output_path) / (file_name + f'.{ext}'))
-        video_processer.convert(video, full_path, ext)
-        print('convert video success.')
-        
-    
-class VideoProcesser:
-    # TODO: run in qthread
-    def __init__(self):
-        return
-    @staticmethod
-    def resize(video: VideoFileClip, width: int, height: int):
-        if video.w == width and video.h == height:
-            return video
-        video = video.resize((width, height))  # need opencv-python
-        return video
-    
-    @staticmethod
-    def flip(video: VideoFileClip, is_vertical_flip: bool, is_horizontal_flip: bool):
-        if is_vertical_flip == False and is_horizontal_flip == False:
-            return video
-        if is_vertical_flip:
-            video = video.fx(vfx.mirror_x)
-        if is_horizontal_flip:
-            video = video.fx(vfx.mirror_y)
-        return video
-    
-    @staticmethod
-    def rotate(video: VideoFileClip, angle: int):
-        if angle % 360 == 0:
-            return video
-        video = video.rotate(90)
-        return video
-    
-    @staticmethod
-    def _get_codec_and_audio_codec(output_ext: str) -> tuple[str, str]:
-        ext = output_ext.lower()
-        if ext in ['mp4', 'm4v']:
-            return 'libx264', 'aac'
-        elif ext == 'webm':
-            return 'libvpx', 'libvorbis'
-        elif ext == 'avi':
-            return 'libxvid', 'mp3'
-        elif ext == 'mov':
-            return 'libx264', 'aac'
-        elif ext == 'wmv':
-            return 'wmv2', 'wmav2'
-        elif ext == 'flv':
-            return 'flv', 'libmp3lame'
-        elif ext == 'asf':
-            return 'wmv2', 'wmav2'
-        elif ext == 'mkv':
-            return 'libx264', 'aac'  # or 'libvorbis'
-        elif ext == 'avchd':
-            return 'libx264', 'aac'
-        elif ext == 'gif':
-            return 'gif', None
-        elif ext == 'vob':
-            return 'mpeg2video', 'mp2'
-        else:
-            return None, None
-        
-    def convert(self, video: VideoFileClip, output_path: str, output_ext: str):
-        num_threads = os.cpu_count()
-        vcodec, acodec = self._get_codec_and_audio_codec(output_ext)
-        if vcodec is None and acodec is None:
-            QMessageBox.critical(None, 'ERROR', f'Unsupported file extension: {output_ext}')
-            return
-        if acodec:
-            video.write_videofile(output_path, codec=vcodec, audio_codec=acodec, threads=num_threads)
-        else:
-            video.write_videofile(output_path, codec=vcodec, threads=num_threads)
-    
-    
-class ImgProcesser:
-    # TODO: 用 VideoFileClip 取代
-    @staticmethod
-    def resize(before: QPixmap, width: int, height: int) -> QPixmap:
-        if before.width == width and before.height == height:
-            return before
-        return before.scaled(width, height, aspectRatioMode=Qt.KeepAspectRatio)
-    
-    @staticmethod
-    def flip(before: QPixmap, is_vertical_flip: bool, is_horizontal_flip: bool) -> QPixmap:
-        if is_vertical_flip == False and is_horizontal_flip == False:
-            return before
-        dx = -1 if is_vertical_flip else 1
-        dy = -1 if is_horizontal_flip else 1
-        return before.transformed(QTransform().scale(dx, dy))
-    
-    @staticmethod
-    def rotate(before: QPixmap, angle: int) -> QPixmap:
-        if angle % 360 == 0:
-            return before
-        return before.transformed(QTransform().rotate(angle))
+        self.video.convert(full_path, ext)
+
+    def resize_preview(self, event: QResizeEvent):
+        def resize(pixmap: QPixmap, lbl: QLabel):
+            if pixmap.isNull():
+                return
+            new_pixmap = pixmap.scaled(lbl.width() - 5, lbl.height() - 5, aspectRatioMode=Qt.KeepAspectRatio)
+            lbl.setPixmap(new_pixmap)    
+        resize(self.before, self.ui.before_lbl)
+        resize(self.after, self.ui.after_lbl)

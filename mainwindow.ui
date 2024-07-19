@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>756</width>
-    <height>731</height>
+    <height>735</height>
    </rect>
   </property>
   <property name="font">
@@ -57,7 +57,7 @@ QTabWidget::pane {
 </string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="download_tab">
        <property name="font">
@@ -85,7 +85,12 @@ QPushButton:hover:pressed{
 	border-radius:5px;
 	color:white;
 }
-#step1_gb, #step2_gb, #step3_gb{
+
+#thumbnail_lbl {
+	background-color: white;
+}
+
+#download_step1_gb, #download_step2_gb, #download_step3_gb{
     background-color: rgb(240,240,240); /* 設置QGroupBox的背景顏色 */
     border: 2px solid #CCCCCC;          /* 設置邊框顏色和寬度 */
 	padding: 0 5px;                     /* 標題的內邊距 */
@@ -93,7 +98,7 @@ QPushButton:hover:pressed{
     margin-top: 20px;                   /* 設置頂部邊距以便標題顯示 */
 }
 
-#step1_gb:title, #step2_gb::title, #step3_gb:title {
+#download_step1_gb:title, #download_step2_gb::title, #download_step3_gb:title {
     subcontrol-origin: margin;          /* 標題的基準點是邊距 */
     subcontrol-position: top center;    /* 標題的位置 */
     background-color: rgb(134,183,200); /* 設置標題背景顏色 */
@@ -103,9 +108,9 @@ QPushButton:hover:pressed{
        <attribute name="title">
         <string>Download</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="6,26,5">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="3,19,5">
         <item>
-         <widget class="QGroupBox" name="step1_gb">
+         <widget class="QGroupBox" name="download_step1_gb">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>1</horstretch>
@@ -130,8 +135,8 @@ QPushButton:hover:pressed{
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
-          <layout class="QGridLayout" name="gridLayout" columnstretch="3,1,1">
-           <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,1,1">
+           <item>
             <widget class="QLineEdit" name="url_lineedit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -149,11 +154,11 @@ QPushButton:hover:pressed{
               </font>
              </property>
              <property name="text">
-              <string>https://www.youtube.com/watch?v=qb3VxdwLwcU</string>
+              <string/>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
+           <item>
             <widget class="QPushButton" name="supported_sites_btn">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -168,11 +173,11 @@ QPushButton:hover:pressed{
               </font>
              </property>
              <property name="text">
-              <string>Supported sites</string>
+              <string>Supported Sites</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
+           <item>
             <widget class="QPushButton" name="get_info_btn">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -194,52 +199,11 @@ QPushButton:hover:pressed{
              </property>
             </widget>
            </item>
-           <item row="1" column="0" colspan="2">
-            <widget class="QLineEdit" name="download_save_as_lineedit">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial</family>
-               <pointsize>11</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <widget class="QPushButton" name="path_btn">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial</family>
-               <pointsize>11</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Save as...</string>
-             </property>
-            </widget>
-           </item>
           </layout>
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="step2_gb">
+         <widget class="QGroupBox" name="download_step2_gb">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -285,7 +249,7 @@ QPushButton:hover:pressed{
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: white;</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string/>
@@ -310,7 +274,7 @@ QPushButton:hover:pressed{
                 </font>
                </property>
                <property name="text">
-                <string>video title:</string>
+                <string>Video Title:</string>
                </property>
               </widget>
              </item>
@@ -354,7 +318,7 @@ QPushButton:hover:pressed{
                 </font>
                </property>
                <property name="text">
-                <string>video author:</string>
+                <string>Video Author:</string>
                </property>
               </widget>
              </item>
@@ -398,7 +362,7 @@ QPushButton:hover:pressed{
                 </font>
                </property>
                <property name="text">
-                <string>video length:</string>
+                <string>Video Length:</string>
                </property>
               </widget>
              </item>
@@ -492,7 +456,7 @@ QPushButton:hover:pressed{
                    </font>
                   </property>
                   <property name="text">
-                   <string>Choose Video / Audio Source</string>
+                   <string>Choose Video Source</string>
                   </property>
                  </widget>
                 </item>
@@ -508,7 +472,7 @@ QPushButton:hover:pressed{
                    </font>
                   </property>
                   <property name="text">
-                   <string>video / audio id:</string>
+                   <string>Video ID:</string>
                   </property>
                  </widget>
                 </item>
@@ -592,7 +556,7 @@ QPushButton:hover:pressed{
                    </font>
                   </property>
                   <property name="text">
-                   <string>subtitles:</string>
+                   <string>Subtitles:</string>
                   </property>
                  </widget>
                 </item>
@@ -633,7 +597,7 @@ QPushButton:hover:pressed{
                    </font>
                   </property>
                   <property name="text">
-                   <string>auto subtitles:</string>
+                   <string>Auto Subtitles:</string>
                   </property>
                  </widget>
                 </item>
@@ -668,7 +632,7 @@ QPushButton:hover:pressed{
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="step3_gb">
+         <widget class="QGroupBox" name="download_step3_gb">
           <property name="font">
            <font>
             <family>Arial</family>
@@ -681,54 +645,103 @@ QPushButton:hover:pressed{
           <property name="title">
            <string>Step 3</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2,1">
+          <layout class="QVBoxLayout" name="verticalLayout_9">
            <item>
-            <widget class="QLabel" name="label">
-             <property name="font">
-              <font>
-               <family>Arial</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="4,1">
+             <item>
+              <widget class="QLineEdit" name="download_save_as_lineedit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="path_btn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Save As...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QPushButton" name="download_btn">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>1</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial</family>
-               <pointsize>11</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Download</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_2">
-             <property name="font">
-              <font>
-               <family>Arial</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QLabel" name="label_15">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="download_btn">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Download</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_16">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -742,605 +755,684 @@ QPushButton:hover:pressed{
          <pointsize>11</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:rgb(134,183,200);
+	border:2px solid #5F92B2;
+	border-radius:5px;
+	color:white
+}
+QPushButton:hover{
+	background-color:rgb(0,130,150);
+	border:2px solid #5F92B2;
+	border-radius:5px;
+	color:white;
+}
+QPushButton:hover:pressed{
+	background-color:rgb(85,170,255); 
+	border:2px solid #3C80B1;
+	border-radius:5px;
+	color:white;
+}
+
+QComboBox {
+    background-color: rgb(134,183,200);
+    color: #ffffff;
+    border: 2px solid #5F92B2;
+    border-radius: 5px;            /* 邊框圓角 */
+    padding: 4px 8px;              /* 內邊距 */
+}
+QComboBox:hover {
+    background-color: rgb(0,130,150);
+    color: #ffffff;
+    border: 2px solid #5F92B2;
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 13px;
+}
+
+#before_lbl, #after_lbl {
+	background-color: white;
+}
+
+#convert_step1_gb, #convert_step2_gb, #convert_step3_gb{
+    background-color: rgb(240,240,240); /* 設置QGroupBox的背景顏色 */
+    border: 2px solid #CCCCCC;          /* 設置邊框顏色和寬度 */
+	padding: 0 5px;                     /* 標題的內邊距 */
+    border-radius: 5px;                 /* 設置邊框圓角 */
+    margin-top: 20px;                   /* 設置頂部邊距以便標題顯示 */
+}
+
+#convert_step1_gb:title, #convert_step2_gb::title, #convert_step3_gb:title {
+    subcontrol-origin: margin;          /* 標題的基準點是邊距 */
+    subcontrol-position: top center;    /* 標題的位置 */
+    background-color: rgb(134,183,200); /* 設置標題背景顏色 */
+    color: white;                       /* 設置標題文字顏色 */
+}</string>
+       </property>
        <attribute name="title">
         <string>Convert</string>
        </attribute>
-       <widget class="QGroupBox" name="groupBox">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>10</y>
-          <width>701</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Arial</family>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="title">
-         <string>Step 1</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_8">
-         <item row="0" column="1">
-          <widget class="QPushButton" name="choose_file_btn">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Choose File</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLineEdit" name="video_path_lineedit">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>C:\Users\wii03\Desktop\video_downloader\conv\a.webm</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="save_as_btn">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Save As...</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLineEdit" name="video_save_as_lineedit">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>C:\Users\wii03\Desktop\video_downloader\conv</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_2">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>130</y>
-          <width>701</width>
-          <height>421</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Arial</family>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="title">
-         <string>Step 2</string>
-        </property>
-        <widget class="QGroupBox" name="flip_groupbox">
-         <property name="geometry">
-          <rect>
-           <x>180</x>
-           <y>20</y>
-           <width>131</width>
-           <height>91</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="title">
-          <string>flip</string>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QCheckBox" name="vertical_checkbox">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>vertical</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="horizontal_checkbox">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>horizontal</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QGroupBox" name="rotate_groupbox">
-         <property name="geometry">
-          <rect>
-           <x>330</x>
-           <y>20</y>
-           <width>131</width>
-           <height>91</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="title">
-          <string>rotate</string>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QLabel" name="label_7">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>angle: </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="angle_lineedit">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="maxLength">
-             <number>3</number>
-            </property>
-            <property name="placeholderText">
-             <string/>
-            </property>
-            <property name="clearButtonEnabled">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_6">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>°</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QGroupBox" name="resize_groupbox">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>20</y>
-           <width>131</width>
-           <height>89</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="title">
-          <string>resize</string>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Width: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="width_lineedit">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="placeholderText">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Height: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="height_lineedit">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="placeholderText">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QGroupBox" name="schematic_groupbox">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>130</y>
-           <width>681</width>
-           <height>281</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="title">
-          <string>Preview</string>
-         </property>
-         <widget class="QLabel" name="before_lbl">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>30</y>
-            <width>260</width>
-            <height>192</height>
-           </rect>
-          </property>
+       <layout class="QVBoxLayout" name="verticalLayout_7" stretch="3,19,5">
+        <item>
+         <widget class="QGroupBox" name="convert_step1_gb">
           <property name="font">
            <font>
             <family>Arial</family>
             <pointsize>11</pointsize>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true"/>
+          <property name="title">
+           <string>Step 1</string>
           </property>
-          <property name="text">
-           <string/>
-          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="4,1">
+           <item>
+            <widget class="QLineEdit" name="video_path_lineedit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="choose_file_btn">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Choose File</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
-         <widget class="QLabel" name="label_8">
-          <property name="geometry">
-           <rect>
-            <x>300</x>
-            <y>100</y>
-            <width>31</width>
-            <height>31</height>
-           </rect>
-          </property>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="convert_step2_gb">
           <property name="font">
            <font>
             <family>Arial</family>
             <pointsize>11</pointsize>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">border-image: url(:/icons/icons/arrow-32.png);</string>
+          <property name="title">
+           <string>Step 2</string>
           </property>
-          <property name="text">
-           <string/>
-          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_8" stretch="1,4">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QGroupBox" name="resize_gb">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="title">
+                <string>Resize</string>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_4">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Width: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="width_lineedit">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="placeholderText">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_5">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Height: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="height_lineedit">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="placeholderText">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="flip_gb">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="title">
+                <string>Flip</string>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QCheckBox" name="vertical_checkbox">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Vertical</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="horizontal_checkbox">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Horizontal</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="rotate_gb">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="title">
+                <string>Rotate</string>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
+                 <widget class="QPushButton" name="left_rotate_btn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Left</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="right_rotate_btn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>Right</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="ext_gb">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="title">
+                <string>File Extension</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="QLabel" name="label_3">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>extension: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="ext_combobox">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>mp4</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>m4v</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>mkv</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>webm</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>avi</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>mov</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>wmv</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>flv</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>asf</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>avchd</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>vob</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="preview_gb">
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="title">
+              <string>Preview</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="7,1,7">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,8">
+                <item>
+                 <widget class="QLabel" name="before_size_lbl">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Before: </string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="before_lbl">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5" stretch="5,2,5">
+                <item>
+                 <widget class="QLabel" name="label_7">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_8">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">border-image: url(:/icons/icons/arrow-32.png);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_6">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,8">
+                <item>
+                 <widget class="QLabel" name="after_size_lbl">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>After: </string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="after_lbl">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
          </widget>
-         <widget class="QLabel" name="after_lbl">
-          <property name="geometry">
-           <rect>
-            <x>370</x>
-            <y>30</y>
-            <width>260</width>
-            <height>192</height>
-           </rect>
-          </property>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="convert_step3_gb">
           <property name="font">
            <font>
             <family>Arial</family>
             <pointsize>11</pointsize>
            </font>
           </property>
-          <property name="text">
-           <string/>
+          <property name="title">
+           <string>Step 3</string>
           </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="4,1">
+             <item>
+              <widget class="QLineEdit" name="video_save_as_lineedit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="save_as_btn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Save As...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QLabel" name="label_14">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="convert_btn">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Convert</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_13">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
-         <widget class="QLabel" name="before_size_lbl">
-          <property name="geometry">
-           <rect>
-            <x>70</x>
-            <y>240</y>
-            <width>91</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>1234 x 5678</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="after_size_lbl">
-          <property name="geometry">
-           <rect>
-            <x>470</x>
-            <y>220</y>
-            <width>91</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>1234 x 5678</string>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_3">
-         <property name="geometry">
-          <rect>
-           <x>470</x>
-           <y>20</y>
-           <width>201</width>
-           <height>81</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="title">
-          <string>output</string>
-         </property>
-         <widget class="QComboBox" name="ext_combobox">
-          <property name="geometry">
-           <rect>
-            <x>100</x>
-            <y>30</y>
-            <width>91</width>
-            <height>22</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <item>
-           <property name="text">
-            <string>mp4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>m4v</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>webm</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>mkv</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>avi</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>mov</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>wmv</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>flv</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>asf</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>avchd</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>vob</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>gif</string>
-           </property>
-          </item>
-         </widget>
-         <widget class="QLabel" name="label_3">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>30</y>
-            <width>71</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>extension: </string>
-          </property>
-         </widget>
-        </widget>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_7">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>560</y>
-          <width>561</width>
-          <height>62</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Arial</family>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="title">
-         <string>Step 3</string>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QLabel" name="label_14">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="convert_btn">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Convert</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_13">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
