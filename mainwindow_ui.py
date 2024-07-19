@@ -507,7 +507,7 @@ class Ui_MainWindow(object):
         self.label_15.setObjectName("label_15")
         self.horizontalLayout_11.addWidget(self.label_15)
         self.download_btn = QtWidgets.QPushButton(self.download_step3_gb)
-        self.download_btn.setEnabled(False)
+        self.download_btn.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

@@ -56,8 +56,7 @@ class Video:
             
     def rotate(self, angle: int) -> QPixmap:
         self.rotate_angle = (self.rotate_angle + angle) % 360
-        if self.rotate_angle != 0:
-            self.clip = self.clip.rotate(angle)
+        self.clip = self.clip.rotate(angle)
         
     @staticmethod
     def _get_codec_and_audio_codec(output_ext: str) -> tuple[str, str]:

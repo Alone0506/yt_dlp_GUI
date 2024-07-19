@@ -709,7 +709,7 @@ QPushButton:hover:pressed{
              <item>
               <widget class="QPushButton" name="download_btn">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
