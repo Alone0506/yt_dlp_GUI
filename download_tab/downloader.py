@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from PyQt5.QtCore import QThread, pyqtSignal
-# from convert_tab.processer import VideoProcesser
 import yt_dlp
 
 class DownloadInfoThread(QThread):
