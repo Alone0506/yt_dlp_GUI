@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\wii03\Desktop\yt_dlp2\download_tab\video_subwindow\video.ui'
+# Form implementation generated from reading ui file 'c:\Users\wii03\Desktop\video_downloader\download_tab\video_subwindow\video.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -19,11 +19,12 @@ class Ui_Form(object):
         font.setFamily("Arial")
         font.setPointSize(11)
         Form.setFont(font)
-        Form.setStyleSheet("QWidget {\n"
+        Form.setStyleSheet("/*\n"
+"QWidget {\n"
 "    background-color: #F0F4F4;\n"
 "    color: #2E7D32;\n"
 "}\n"
-"\n"
+"*/\n"
 "/* QLabel settings */\n"
 "QLabel {\n"
 "    color: #2E7D32;\n"
@@ -51,10 +52,6 @@ class Ui_Form(object):
 "    selection-background-color: #A5D6A7;\n"
 "    border: 1px solid #81C784;\n"
 "}\n"
-"QTableWidget::item {\n"
-"    border: 1px solid #81C784;\n"
-"    padding: 2px;\n"
-"}\n"
 "QTableWidget::item::selected{\n"
 "    color:white;\n"
 "    background:#609d78;\n"
@@ -64,7 +61,9 @@ class Ui_Form(object):
 "    color: white;\n"
 "    padding: 4px;\n"
 "    border: 1px solid #81C784;\n"
-"}")
+"}\n"
+"\n"
+"")
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout.setObjectName("verticalLayout")
         self.video_audio_lbl = QtWidgets.QLabel(Form)
@@ -125,6 +124,7 @@ class Ui_Form(object):
         font.setFamily("Arial")
         font.setPointSize(11)
         self.video_table.setFont(font)
+        self.video_table.setStyleSheet("")
         self.video_table.setObjectName("video_table")
         self.video_table.setColumnCount(12)
         self.video_table.setRowCount(0)
@@ -201,8 +201,8 @@ class Ui_Form(object):
         self.audio_table.horizontalHeader().setSortIndicatorShown(True)
         self.audio_table.verticalHeader().setSortIndicatorShown(False)
         self.verticalLayout.addWidget(self.audio_table)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.gridLayout = QtWidgets.QGridLayout()
+        self.gridLayout.setObjectName("gridLayout")
         self.default_lbl = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -210,9 +210,22 @@ class Ui_Form(object):
         self.default_lbl.setFont(font)
         self.default_lbl.setText("")
         self.default_lbl.setObjectName("default_lbl")
-        self.horizontalLayout.addWidget(self.default_lbl)
+        self.gridLayout.addWidget(self.default_lbl, 0, 0, 2, 1)
+        self.simple_rbtn = QtWidgets.QRadioButton(Form)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.simple_rbtn.sizePolicy().hasHeightForWidth())
+        self.simple_rbtn.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.simple_rbtn.setFont(font)
+        self.simple_rbtn.setChecked(True)
+        self.simple_rbtn.setObjectName("simple_rbtn")
+        self.gridLayout.addWidget(self.simple_rbtn, 0, 1, 1, 1)
         self.ok_btn = QtWidgets.QPushButton(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.ok_btn.sizePolicy().hasHeightForWidth())
@@ -222,16 +235,46 @@ class Ui_Form(object):
         font.setPointSize(11)
         self.ok_btn.setFont(font)
         self.ok_btn.setObjectName("ok_btn")
-        self.horizontalLayout.addWidget(self.ok_btn)
+        self.gridLayout.addWidget(self.ok_btn, 0, 2, 2, 1)
         self.label = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(11)
         self.label.setFont(font)
-        self.label.setText("")
+        self.label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label)
-        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.gridLayout.addWidget(self.label, 0, 3, 2, 1)
+        self.detailed_rbtn = QtWidgets.QRadioButton(Form)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.detailed_rbtn.sizePolicy().hasHeightForWidth())
+        self.detailed_rbtn.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.detailed_rbtn.setFont(font)
+        self.detailed_rbtn.setObjectName("detailed_rbtn")
+        self.gridLayout.addWidget(self.detailed_rbtn, 1, 1, 1, 1)
+        self.checkBox = QtWidgets.QCheckBox(Form)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
+        self.checkBox.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.checkBox.setFont(font)
+        self.checkBox.setStyleSheet("QCheckBox::indicator {\n"
+"    background-color: #81c784;\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"}\n"
+"")
+        self.checkBox.setText("")
+        self.checkBox.setObjectName("checkBox")
+        self.gridLayout.addWidget(self.checkBox, 0, 4, 2, 1)
+        self.verticalLayout.addLayout(self.gridLayout)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -308,4 +351,7 @@ class Ui_Form(object):
         item.setText(_translate("Form", "ACODEC"))
         item = self.audio_table.horizontalHeaderItem(11)
         item.setText(_translate("Form", "ABR"))
+        self.simple_rbtn.setText(_translate("Form", "Simple Mode"))
         self.ok_btn.setText(_translate("Form", "OK !"))
+        self.label.setText(_translate("Form", "default:"))
+        self.detailed_rbtn.setText(_translate("Form", "Detail Mode"))

@@ -6,7 +6,6 @@ from yt_dlp.YoutubeDL import format_bytes
 from .video_ui import Ui_Form as Ui_Video_Form
 
 class VideoSubWindow(QWidget):
-    # TODO: 精簡模式跟完整模式
     data_sent = pyqtSignal(str)
 
     def __init__(self):
@@ -14,7 +13,7 @@ class VideoSubWindow(QWidget):
         self.ui = Ui_Video_Form()
         self.ui.setupUi(self)
         self.tables = [self.ui.video_audio_table, self.ui.video_table, self.ui.audio_table]
-        self.vide_audio_choose_id = ""
+        self.video_audio_choose_id = ""
         self.video_choose_id = ""
         self.audio_choose_id = ""
 
@@ -22,7 +21,9 @@ class VideoSubWindow(QWidget):
         self.ui.video_table.horizontalHeader().sortIndicatorChanged.connect(lambda col, ord: self.indicator_changed(self.ui.video_table, col, ord))
         self.ui.audio_table.horizontalHeader().sortIndicatorChanged.connect(lambda col, ord: self.indicator_changed(self.ui.audio_table, col, ord))
         
-    def setting_tables(self, video_audio: list[dict[str, str]], video: list[dict[str, str]], audio: list[dict[str, str]], best_formats: str):
+        self.ui.simple_rbtn.click()
+        
+    def setting_tables(self, video_audio: list[dict[str, str]], video: list[dict[str, str]], audio: list[dict[str, str]], best_ids: list[str]):
         def get_infos(src: dict[str, str]) -> list[str]:
             infos = []
             infos.append(src.get('format_id', 'none'))
@@ -106,10 +107,24 @@ class VideoSubWindow(QWidget):
         for table, table_src in zip(self.tables, [video_audio, video, audio]):
             clear_table(table)
             set_table_item(table, table_src)
-        self.ui.default_lbl.setText('default best format: ' + best_formats)
-        self.vide_audio_choose_id = ""
+            
+        self.video_audio_choose_id = ""
         self.video_choose_id = ""
         self.audio_choose_id = ""
+                
+        for table in self.tables:
+            for row in range(table.rowCount()):
+                if table.item(row, 1).text() in best_ids:  # items's id is one of best format
+                    table.item(row, 0).setCheckState(Qt.Checked)
+                    for col in range(table.columnCount()):
+                        table.item(row, col).setBackground(QBrush(QColor(129, 199, 132)))
+                    if table == self.ui.video_audio_table:
+                        self.on_video_audio_table_itemChanged(table.item(row, 0))
+                    elif table == self.ui.video_table:
+                        self.on_video_table_itemChanged(table.item(row, 0))
+                    else:
+                        self.on_audio_table_itemChanged(table.item(row, 0))
+                    break
                 
     def lock_table(self, table: QTableWidget, except_row: int = -1):
         table.blockSignals(True)
@@ -131,12 +146,12 @@ class VideoSubWindow(QWidget):
     @pyqtSlot(QTableWidgetItem)
     def on_video_audio_table_itemChanged(self, changed_item: QTableWidgetItem) -> None:
         if changed_item.checkState() == Qt.Checked:
-            self.vide_audio_choose_id = self.ui.video_audio_table.item(changed_item.row(), 1).text()
+            self.video_audio_choose_id = self.ui.video_audio_table.item(changed_item.row(), 1).text()
             self.lock_table(self.ui.video_audio_table, changed_item.row())
             self.lock_table(self.ui.video_table)
             self.lock_table(self.ui.audio_table)
         else:
-            self.vide_audio_choose_id = ""
+            self.video_audio_choose_id = ""
             self.unlock_table(self.ui.video_audio_table)
             self.unlock_table(self.ui.video_table)
             self.unlock_table(self.ui.audio_table)
@@ -166,8 +181,24 @@ class VideoSubWindow(QWidget):
             self.unlock_table(self.ui.audio_table)
 
     @pyqtSlot()
+    def on_simple_rbtn_clicked(self) -> None:
+        def hide_table(table: QTableWidget):
+            for col in range(6, table.columnCount()):
+                table.setColumnHidden(col, True)
+        for table in self.tables:
+            hide_table(table)
+            
+    @pyqtSlot()
+    def on_detailed_rbtn_clicked(self) -> None:
+        def show_table(table: QTableWidget):
+            for col in range(6, table.columnCount()):
+                table.setColumnHidden(col, False)
+        for table in self.tables:
+            show_table(table)
+
+    @pyqtSlot()
     def on_ok_btn_clicked(self) -> None:
-        format_id = '+'.join((s for s in [self.vide_audio_choose_id, self.video_choose_id, self.audio_choose_id] if s != ''))
+        format_id = '+'.join((s for s in [self.video_audio_choose_id, self.video_choose_id, self.audio_choose_id] if s != ''))
         self.data_sent.emit(format_id)
         self.hide()
 

@@ -23,17 +23,8 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_6">
-    <item row="0" column="0">
-     <widget class="QTabWidget" name="main_tabwidget">
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>11</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QTabWidget {
+   <property name="styleSheet">
+    <string notr="true">QTabWidget {
     background-color: #ffffff;     /* 主背景色設置為白色 */
 }
 
@@ -44,30 +35,18 @@ QTabBar::tab {
     border-top-left-radius: 4px;   /* 左上圓角 */
     border-top-right-radius: 4px;  /* 右上圓角 */
 }
-
 QTabBar::tab:selected {
     background-color: #005c99;     /* 選中標籤背景色設置為深藍色 */
     color: #ffffff;                /* 選中標籤文字顏色設置為白色 */
 }
-
 QTabWidget::pane {
     border: 1px solid #4a90e2;     /* 內容區域邊框設置為藍色 */
     background-color: #ffffff;     /* 內容區域背景色設置為白色 */
 }
-</string>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="download_tab">
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
+
+
+
+QPushButton {
 	background-color:rgb(134,183,200);
 	border:2px solid #5F92B2;
 	border-radius:5px;
@@ -86,11 +65,41 @@ QPushButton:hover:pressed{
 	color:white;
 }
 
-#thumbnail_lbl {
+
+
+QComboBox {
+    background-color: rgb(134,183,200);
+    color: #ffffff;
+    border: 2px solid #5F92B2;
+    border-radius: 5px;            /* 邊框圓角 */
+    padding: 4px 8px;              /* 內邊距 */
+}
+QComboBox:hover {
+    background-color: rgb(0,130,150);
+    color: #ffffff;
+    border: 2px solid #5F92B2;
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 13px;
+}</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_6">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="main_tabwidget">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#thumbnail_lbl, #before_lbl, #after_lbl {
 	background-color: white;
 }
 
-#download_step1_gb, #download_step2_gb, #download_step3_gb{
+#download_step1_gb, #download_step2_gb, #download_step3_gb, #convert_step1_gb, #convert_step2_gb, #convert_step3_gb{
     background-color: rgb(240,240,240); /* 設置QGroupBox的背景顏色 */
     border: 2px solid #CCCCCC;          /* 設置邊框顏色和寬度 */
 	padding: 0 5px;                     /* 標題的內邊距 */
@@ -98,12 +107,25 @@ QPushButton:hover:pressed{
     margin-top: 20px;                   /* 設置頂部邊距以便標題顯示 */
 }
 
-#download_step1_gb:title, #download_step2_gb::title, #download_step3_gb:title {
+#download_step1_gb:title, #download_step2_gb::title, #download_step3_gb:title, #convert_step1_gb:title, #convert_step2_gb::title, #convert_step3_gb:title {
     subcontrol-origin: margin;          /* 標題的基準點是邊距 */
     subcontrol-position: top center;    /* 標題的位置 */
     background-color: rgb(134,183,200); /* 設置標題背景顏色 */
     color: white;                       /* 設置標題文字顏色 */
 }</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="download_tab">
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
        </property>
        <attribute name="title">
         <string>Download</string>
@@ -154,7 +176,7 @@ QPushButton:hover:pressed{
               </font>
              </property>
              <property name="text">
-              <string/>
+              <string>https://www.youtube.com/watch?v=7GJOBkIgWHc</string>
              </property>
             </widget>
            </item>
@@ -477,7 +499,7 @@ QPushButton:hover:pressed{
                  </widget>
                 </item>
                 <item row="1" column="1">
-                 <widget class="QLabel" name="format_lbl">
+                 <widget class="QLabel" name="video_id_lbl">
                   <property name="font">
                    <font>
                     <family>Arial</family>
@@ -520,7 +542,7 @@ QPushButton:hover:pressed{
                </property>
                <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,4">
                 <item row="0" column="1">
-                 <widget class="QPushButton" name="choose_subtitle_lang_format_btn">
+                 <widget class="QPushButton" name="choose_subtitle_btn">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -540,7 +562,7 @@ QPushButton:hover:pressed{
                    <string notr="true"/>
                   </property>
                   <property name="text">
-                   <string>Choose Language / Format</string>
+                   <string>Choose Subtitles</string>
                   </property>
                  </widget>
                 </item>
@@ -647,7 +669,7 @@ QPushButton:hover:pressed{
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_9">
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="4,1">
+            <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="21,4,4,4">
              <item>
               <widget class="QLineEdit" name="download_save_as_lineedit">
                <property name="sizePolicy">
@@ -668,7 +690,7 @@ QPushButton:hover:pressed{
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="path_btn">
+              <widget class="QPushButton" name="download_save_as_btn">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -687,6 +709,90 @@ QPushButton:hover:pressed{
                <property name="text">
                 <string>Save As...</string>
                </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>File Extension:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="download_ext_combobox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>mp4</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>m4v</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>mkv</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>webm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>avi</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>mov</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>wmv</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>flv</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>asf</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>avchd</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>vob</string>
+                </property>
+               </item>
               </widget>
              </item>
             </layout>
@@ -724,7 +830,7 @@ QPushButton:hover:pressed{
                 </font>
                </property>
                <property name="text">
-                <string>Download</string>
+                <string>Download !</string>
                </property>
               </widget>
              </item>
@@ -756,61 +862,7 @@ QPushButton:hover:pressed{
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {
-	background-color:rgb(134,183,200);
-	border:2px solid #5F92B2;
-	border-radius:5px;
-	color:white
-}
-QPushButton:hover{
-	background-color:rgb(0,130,150);
-	border:2px solid #5F92B2;
-	border-radius:5px;
-	color:white;
-}
-QPushButton:hover:pressed{
-	background-color:rgb(85,170,255); 
-	border:2px solid #3C80B1;
-	border-radius:5px;
-	color:white;
-}
-
-QComboBox {
-    background-color: rgb(134,183,200);
-    color: #ffffff;
-    border: 2px solid #5F92B2;
-    border-radius: 5px;            /* 邊框圓角 */
-    padding: 4px 8px;              /* 內邊距 */
-}
-QComboBox:hover {
-    background-color: rgb(0,130,150);
-    color: #ffffff;
-    border: 2px solid #5F92B2;
-}
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 13px;
-}
-
-#before_lbl, #after_lbl {
-	background-color: white;
-}
-
-#convert_step1_gb, #convert_step2_gb, #convert_step3_gb{
-    background-color: rgb(240,240,240); /* 設置QGroupBox的背景顏色 */
-    border: 2px solid #CCCCCC;          /* 設置邊框顏色和寬度 */
-	padding: 0 5px;                     /* 標題的內邊距 */
-    border-radius: 5px;                 /* 設置邊框圓角 */
-    margin-top: 20px;                   /* 設置頂部邊距以便標題顯示 */
-}
-
-#convert_step1_gb:title, #convert_step2_gb::title, #convert_step3_gb:title {
-    subcontrol-origin: margin;          /* 標題的基準點是邊距 */
-    subcontrol-position: top center;    /* 標題的位置 */
-    background-color: rgb(134,183,200); /* 設置標題背景顏色 */
-    color: white;                       /* 設置標題文字顏色 */
-}</string>
+        <string notr="true"/>
        </property>
        <attribute name="title">
         <string>Convert</string>
@@ -871,6 +923,9 @@ QComboBox::drop-down {
         </item>
         <item>
          <widget class="QGroupBox" name="convert_step2_gb">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="font">
            <font>
             <family>Arial</family>
@@ -1065,8 +1120,11 @@ QComboBox::drop-down {
                     <pointsize>11</pointsize>
                    </font>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">border-image: url(:/icons/icons/rotate_left_64.png);</string>
+                  </property>
                   <property name="text">
-                   <string>Left</string>
+                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -1085,10 +1143,10 @@ QComboBox::drop-down {
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">border-image: url(:/icons/icons/rotate_right_64.png);</string>
                   </property>
                   <property name="text">
-                   <string>Right</string>
+                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -1121,7 +1179,7 @@ QComboBox::drop-down {
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="ext_combobox">
+                 <widget class="QComboBox" name="convert_ext_combobox">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1219,7 +1277,7 @@ QComboBox::drop-down {
                    </font>
                   </property>
                   <property name="text">
-                   <string>Before: </string>
+                   <string>Before</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -1292,7 +1350,7 @@ QComboBox::drop-down {
                    </font>
                   </property>
                   <property name="text">
-                   <string>After: </string>
+                   <string>After</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -1325,6 +1383,9 @@ QComboBox::drop-down {
         </item>
         <item>
          <widget class="QGroupBox" name="convert_step3_gb">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="font">
            <font>
             <family>Arial</family>
@@ -1357,7 +1418,7 @@ QComboBox::drop-down {
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="save_as_btn">
+              <widget class="QPushButton" name="convert_save_as_btn">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -1394,9 +1455,6 @@ QComboBox::drop-down {
              </item>
              <item>
               <widget class="QPushButton" name="convert_btn">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -1410,7 +1468,7 @@ QComboBox::drop-down {
                 </font>
                </property>
                <property name="text">
-                <string>Convert</string>
+                <string>Convert !</string>
                </property>
               </widget>
              </item>

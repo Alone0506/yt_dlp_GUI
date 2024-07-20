@@ -32,7 +32,7 @@ class DownloadTab:
         self.downloader.subtitle_thread.progress.connect(self.subtitle_thread_progress)
         self.downloader.subtitle_thread.finished.connect(self.subtitle_thread_finished)
         self.video_subwindow.data_sent.connect(self.show_video_audio_src)
-        self.subtitle_subwindow.data_sent.connect(self.show_subtitle_lang_format)
+        self.subtitle_subwindow.data_sent.connect(self.show_subtitles)
     
     def show_supported_sites(self):
         url = 'https://raw.githubusercontent.com/yt-dlp/yt-dlp/2024.07.16/supportedsites.md'
@@ -57,7 +57,7 @@ class DownloadTab:
     def save_as(self):
         folder_path = QFileDialog.getExistingDirectory(caption="Save as...")
         if folder_path != "":
-            self.ui.download_save_as_lineedit.setText(folder_path)
+            self.ui.download_save_as_lineedit.setText(str(Path(folder_path)))
             
     def choose_video(self):
         self.video_subwindow.show()
@@ -68,8 +68,9 @@ class DownloadTab:
     def download(self):
         url = self.ui.url_lineedit.text()
         path = self.ui.download_save_as_lineedit.text()
-        video_format = self.ui.format_lbl.text()
-        self.downloader.video_thread.download(url, path, video_format)
+        video_ids = self.ui.video_id_lbl.text()
+        video_ext = self.ui.download_ext_combobox.currentText()
+        self.downloader.video_thread.download(url, path, video_ids, video_ext)
         
     def resize_thumbnail(self, event: QResizeEvent):
         if self.pixmap.isNull():
@@ -86,7 +87,7 @@ class DownloadTab:
             QMessageBox.critical(None, 'URL ERROR', 'Please check the error message in terminal and try again.')
             return
         
-        def get_format_infos(formats: list[dict[str, str]]) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
+        def get_id_infos(formats: list[dict[str, str]]) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
             video_audio_srcs: list[dict[str, str]] = []
             video_srcs: list[dict[str, str]] = []
             audio_srcs: list[dict[str, str]] = []
@@ -102,7 +103,7 @@ class DownloadTab:
                     audio_srcs.append(format)
             return video_audio_srcs, video_srcs, audio_srcs
         
-        video_audio_srcs, video_srcs, audio_srcs = get_format_infos(info.get('formats', []))
+        video_audio_srcs, video_srcs, audio_srcs = get_id_infos(info.get('formats', []))
         # setting mainwindow
         try:
             res = requests.get(info['thumbnail'])
@@ -116,32 +117,38 @@ class DownloadTab:
         self.ui.video_length_lbl.setText(info['duration_string'])
         
         # setting subwindows
-        best_formats = info['format_id']
-        self.video_subwindow.setting_tables(video_audio_srcs, video_srcs, audio_srcs, best_formats)
+        best_ids = [i.strip() for i in info['format_id'].split('+')]
+        self.ui.video_id_lbl.setText(info['format_id'])
+        self.video_subwindow.setting_tables(video_audio_srcs, video_srcs, audio_srcs, best_ids)
         self.subtitle_subwindow.setting_tables(info.get('subtitles', {}), info.get('automatic_captions', {}))
         
     def show_video_audio_src(self, video_audio_src: str):
-        self.ui.format_lbl.setText(video_audio_src)
+        self.ui.video_id_lbl.setText(video_audio_src)
             
-    def show_subtitle_lang_format(self, subtitles_choose: dict[str, list[str]], auto_subtitles_choose: dict[str, list[str]]):
-        def get_choose_str(choose_datas: dict[str, list[str]]) -> str:
+    def show_subtitles(self, subtitles: dict[str, list[str]], auto_subtitles: dict[str, list[str]]):
+        def subtitles2str(choose_datas: dict[str, list[str]]) -> str:
             choose_str = ''
             for lang, formats in choose_datas.items():
                 choose_str += f'{lang}: '
                 choose_str += ', '.join(i for i in formats)
             return choose_str
-        self.ui.subtitle_lineedit.setText(get_choose_str(subtitles_choose))
-        self.ui.auto_subtitle_lineedit.setText(get_choose_str(auto_subtitles_choose))
+        self.ui.subtitle_lineedit.setText(subtitles2str(subtitles))
+        self.ui.auto_subtitle_lineedit.setText(subtitles2str(auto_subtitles))
         
-        # merge subtitles_choose & auto_subtitles_choose
-        self.subtitles_choose = auto_subtitles_choose.copy()
-        self.subtitles_choose.update(subtitles_choose)
+        # merge subtitles & auto_subtitles
+        self.subtitles_choose = auto_subtitles.copy()
+        self.subtitles_choose.update(subtitles)
         
     def video_thread_finished(self, is_success: bool) -> None:
         if is_success:
             print('Download video success.\n')
         else:
-            QMessageBox.critical(None, 'ERR', 'Please check the error message in terminal and try again.')
+            err_msg = (
+                'Please check the error message in terminal and try again.\n\n'
+                'If "ERROR: Postprocessing: Conversion failed!" appears, '
+                'please try downloading a different format and then convert it.'
+            )
+            QMessageBox.critical(None, 'ERR', err_msg)
             print('Download video fail.\n')
         url = self.ui.url_lineedit.text()
         path = self.ui.download_save_as_lineedit.text()

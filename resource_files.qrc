@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
     <file>icons/arrow-32.png</file>
+    <file>icons/rotate_left_64.png</file>
+    <file>icons/rotate_right_64.png</file>
   </qresource>
 </RCC>

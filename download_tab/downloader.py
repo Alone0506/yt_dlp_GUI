@@ -1,4 +1,7 @@
+from pathlib import Path
+
 from PyQt5.QtCore import QThread, pyqtSignal
+# from convert_tab.processer import VideoProcesser
 import yt_dlp
 
 class DownloadInfoThread(QThread):
@@ -16,6 +19,7 @@ class DownloadInfoThread(QThread):
             'writesubtitles': True,
             'writeautomaticsub': True,
             'skip_download': True,
+            'ffmpeg_location': str(Path.cwd() / 'ffmpeg' / 'bin' / 'ffmpeg.exe'),
         }
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -31,19 +35,22 @@ class DownloadVideoThread(QThread):
     def __init__(self):
         super().__init__()
     
-    def download(self, url: str, path: str, video_format: str):
+    def download(self, url: str, output_path: str, video_ids: str, video_ext: str):
         self.url = url
-        self.path = path
-        self.video_format = video_format
+        self.output_path = output_path
+        self.video_ids = video_ids
+        self.video_ext = video_ext
         self.start()
     
     def run(self):
-        if not self.video_format:
+        if not self.video_ids:
             return
         ydl_opts = {
-            'format': self.video_format,
-            "paths": {"home": self.path},
+            'format': self.video_ids,
+            "paths": {"home": self.output_path},
             "outtmpl": "%(title)s.%(ext)s",
+            'ffmpeg_location': str(Path.cwd() / 'ffmpeg' / 'bin' / 'ffmpeg.exe'),
+            'merge_output_format': self.video_ext,
         }
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -60,9 +67,9 @@ class DownloadSubtitleThread(QThread):
     def __init__(self):
         super().__init__()
     
-    def download(self, url: str, path: str, choose_datas: dict[str, list[str]]):
+    def download(self, url: str, output_path: str, choose_datas: dict[str, list[str]]):
         self.url = url
-        self.path = path
+        self.output_path = output_path
         self.choose_datas = choose_datas
         self.start()
     
@@ -76,8 +83,9 @@ class DownloadSubtitleThread(QThread):
             'subtitleslangs': [],
             'subtitlesformat': '',
             'skip_download': True,
-            "paths": {"home": self.path},
+            "paths": {"home": self.output_path},
             "outtmpl": "%(title)s.%(ext)s",
+            'ffmpeg_location': str(Path.cwd() / 'ffmpeg' / 'bin' / 'ffmpeg.exe'),
         }
         for lang, formats in self.choose_datas.items():
             ydl_opts['subtitleslangs'] = [lang]

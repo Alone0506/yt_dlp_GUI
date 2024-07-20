@@ -21,15 +21,7 @@ class Ui_MainWindow(object):
         MainWindow.setFont(font)
         MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout_6 = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout_6.setObjectName("gridLayout_6")
-        self.main_tabwidget = QtWidgets.QTabWidget(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
-        self.main_tabwidget.setFont(font)
-        self.main_tabwidget.setStyleSheet("QTabWidget {\n"
+        self.centralwidget.setStyleSheet("QTabWidget {\n"
 "    background-color: #ffffff;     /* 主背景色設置為白色 */\n"
 "}\n"
 "\n"
@@ -40,24 +32,18 @@ class Ui_MainWindow(object):
 "    border-top-left-radius: 4px;   /* 左上圓角 */\n"
 "    border-top-right-radius: 4px;  /* 右上圓角 */\n"
 "}\n"
-"\n"
 "QTabBar::tab:selected {\n"
 "    background-color: #005c99;     /* 選中標籤背景色設置為深藍色 */\n"
 "    color: #ffffff;                /* 選中標籤文字顏色設置為白色 */\n"
 "}\n"
-"\n"
 "QTabWidget::pane {\n"
 "    border: 1px solid #4a90e2;     /* 內容區域邊框設置為藍色 */\n"
 "    background-color: #ffffff;     /* 內容區域背景色設置為白色 */\n"
 "}\n"
-"")
-        self.main_tabwidget.setObjectName("main_tabwidget")
-        self.download_tab = QtWidgets.QWidget()
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
-        self.download_tab.setFont(font)
-        self.download_tab.setStyleSheet("QPushButton {\n"
+"\n"
+"\n"
+"\n"
+"QPushButton {\n"
 "    background-color:rgb(134,183,200);\n"
 "    border:2px solid #5F92B2;\n"
 "    border-radius:5px;\n"
@@ -76,11 +62,38 @@ class Ui_MainWindow(object):
 "    color:white;\n"
 "}\n"
 "\n"
-"#thumbnail_lbl {\n"
+"\n"
+"\n"
+"QComboBox {\n"
+"    background-color: rgb(134,183,200);\n"
+"    color: #ffffff;\n"
+"    border: 2px solid #5F92B2;\n"
+"    border-radius: 5px;            /* 邊框圓角 */\n"
+"    padding: 4px 8px;              /* 內邊距 */\n"
+"}\n"
+"QComboBox:hover {\n"
+"    background-color: rgb(0,130,150);\n"
+"    color: #ffffff;\n"
+"    border: 2px solid #5F92B2;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 13px;\n"
+"}")
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout_6 = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout_6.setObjectName("gridLayout_6")
+        self.main_tabwidget = QtWidgets.QTabWidget(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.main_tabwidget.setFont(font)
+        self.main_tabwidget.setStyleSheet("#thumbnail_lbl, #before_lbl, #after_lbl {\n"
 "    background-color: white;\n"
 "}\n"
 "\n"
-"#download_step1_gb, #download_step2_gb, #download_step3_gb{\n"
+"#download_step1_gb, #download_step2_gb, #download_step3_gb, #convert_step1_gb, #convert_step2_gb, #convert_step3_gb{\n"
 "    background-color: rgb(240,240,240); /* 設置QGroupBox的背景顏色 */\n"
 "    border: 2px solid #CCCCCC;          /* 設置邊框顏色和寬度 */\n"
 "    padding: 0 5px;                     /* 標題的內邊距 */\n"
@@ -88,12 +101,19 @@ class Ui_MainWindow(object):
 "    margin-top: 20px;                   /* 設置頂部邊距以便標題顯示 */\n"
 "}\n"
 "\n"
-"#download_step1_gb:title, #download_step2_gb::title, #download_step3_gb:title {\n"
+"#download_step1_gb:title, #download_step2_gb::title, #download_step3_gb:title, #convert_step1_gb:title, #convert_step2_gb::title, #convert_step3_gb:title {\n"
 "    subcontrol-origin: margin;          /* 標題的基準點是邊距 */\n"
 "    subcontrol-position: top center;    /* 標題的位置 */\n"
 "    background-color: rgb(134,183,200); /* 設置標題背景顏色 */\n"
 "    color: white;                       /* 設置標題文字顏色 */\n"
 "}")
+        self.main_tabwidget.setObjectName("main_tabwidget")
+        self.download_tab = QtWidgets.QWidget()
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.download_tab.setFont(font)
+        self.download_tab.setStyleSheet("")
         self.download_tab.setObjectName("download_tab")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.download_tab)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -128,7 +148,6 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.url_lineedit.setFont(font)
-        self.url_lineedit.setText("")
         self.url_lineedit.setObjectName("url_lineedit")
         self.horizontalLayout_2.addWidget(self.url_lineedit)
         self.supported_sites_btn = QtWidgets.QPushButton(self.download_step1_gb)
@@ -343,18 +362,18 @@ class Ui_MainWindow(object):
         self.lbl_4.setFont(font)
         self.lbl_4.setObjectName("lbl_4")
         self.gridLayout_3.addWidget(self.lbl_4, 1, 0, 1, 1)
-        self.format_lbl = QtWidgets.QLabel(self.video_gb)
+        self.video_id_lbl = QtWidgets.QLabel(self.video_gb)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        self.format_lbl.setFont(font)
-        self.format_lbl.setText("")
-        self.format_lbl.setWordWrap(True)
-        self.format_lbl.setObjectName("format_lbl")
-        self.gridLayout_3.addWidget(self.format_lbl, 1, 1, 1, 1)
+        self.video_id_lbl.setFont(font)
+        self.video_id_lbl.setText("")
+        self.video_id_lbl.setWordWrap(True)
+        self.video_id_lbl.setObjectName("video_id_lbl")
+        self.gridLayout_3.addWidget(self.video_id_lbl, 1, 1, 1, 1)
         self.horizontalLayout.addWidget(self.video_gb)
         self.subtitle_gb = QtWidgets.QGroupBox(self.download_step2_gb)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -372,22 +391,22 @@ class Ui_MainWindow(object):
         self.subtitle_gb.setObjectName("subtitle_gb")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.subtitle_gb)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.choose_subtitle_lang_format_btn = QtWidgets.QPushButton(self.subtitle_gb)
+        self.choose_subtitle_btn = QtWidgets.QPushButton(self.subtitle_gb)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.choose_subtitle_lang_format_btn.sizePolicy().hasHeightForWidth())
-        self.choose_subtitle_lang_format_btn.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.choose_subtitle_btn.sizePolicy().hasHeightForWidth())
+        self.choose_subtitle_btn.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        self.choose_subtitle_lang_format_btn.setFont(font)
-        self.choose_subtitle_lang_format_btn.setStyleSheet("")
-        self.choose_subtitle_lang_format_btn.setObjectName("choose_subtitle_lang_format_btn")
-        self.gridLayout_2.addWidget(self.choose_subtitle_lang_format_btn, 0, 1, 1, 1)
+        self.choose_subtitle_btn.setFont(font)
+        self.choose_subtitle_btn.setStyleSheet("")
+        self.choose_subtitle_btn.setObjectName("choose_subtitle_btn")
+        self.gridLayout_2.addWidget(self.choose_subtitle_btn, 0, 1, 1, 1)
         self.lbl_5 = QtWidgets.QLabel(self.subtitle_gb)
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -478,23 +497,55 @@ class Ui_MainWindow(object):
         self.download_save_as_lineedit.setFont(font)
         self.download_save_as_lineedit.setObjectName("download_save_as_lineedit")
         self.horizontalLayout_10.addWidget(self.download_save_as_lineedit)
-        self.path_btn = QtWidgets.QPushButton(self.download_step3_gb)
+        self.download_save_as_btn = QtWidgets.QPushButton(self.download_step3_gb)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.path_btn.sizePolicy().hasHeightForWidth())
-        self.path_btn.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.download_save_as_btn.sizePolicy().hasHeightForWidth())
+        self.download_save_as_btn.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        self.path_btn.setFont(font)
-        self.path_btn.setObjectName("path_btn")
-        self.horizontalLayout_10.addWidget(self.path_btn)
-        self.horizontalLayout_10.setStretch(0, 4)
-        self.horizontalLayout_10.setStretch(1, 1)
+        self.download_save_as_btn.setFont(font)
+        self.download_save_as_btn.setObjectName("download_save_as_btn")
+        self.horizontalLayout_10.addWidget(self.download_save_as_btn)
+        self.label_9 = QtWidgets.QLabel(self.download_step3_gb)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.label_9.setFont(font)
+        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_10.addWidget(self.label_9)
+        self.download_ext_combobox = QtWidgets.QComboBox(self.download_step3_gb)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.download_ext_combobox.sizePolicy().hasHeightForWidth())
+        self.download_ext_combobox.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.download_ext_combobox.setFont(font)
+        self.download_ext_combobox.setObjectName("download_ext_combobox")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.download_ext_combobox.addItem("")
+        self.horizontalLayout_10.addWidget(self.download_ext_combobox)
+        self.horizontalLayout_10.setStretch(0, 21)
+        self.horizontalLayout_10.setStretch(1, 4)
+        self.horizontalLayout_10.setStretch(2, 4)
+        self.horizontalLayout_10.setStretch(3, 4)
         self.verticalLayout_9.addLayout(self.horizontalLayout_10)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
@@ -538,61 +589,7 @@ class Ui_MainWindow(object):
         font.setFamily("Arial")
         font.setPointSize(11)
         self.convert_tab.setFont(font)
-        self.convert_tab.setStyleSheet("QPushButton {\n"
-"    background-color:rgb(134,183,200);\n"
-"    border:2px solid #5F92B2;\n"
-"    border-radius:5px;\n"
-"    color:white\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color:rgb(0,130,150);\n"
-"    border:2px solid #5F92B2;\n"
-"    border-radius:5px;\n"
-"    color:white;\n"
-"}\n"
-"QPushButton:hover:pressed{\n"
-"    background-color:rgb(85,170,255); \n"
-"    border:2px solid #3C80B1;\n"
-"    border-radius:5px;\n"
-"    color:white;\n"
-"}\n"
-"\n"
-"QComboBox {\n"
-"    background-color: rgb(134,183,200);\n"
-"    color: #ffffff;\n"
-"    border: 2px solid #5F92B2;\n"
-"    border-radius: 5px;            /* 邊框圓角 */\n"
-"    padding: 4px 8px;              /* 內邊距 */\n"
-"}\n"
-"QComboBox:hover {\n"
-"    background-color: rgb(0,130,150);\n"
-"    color: #ffffff;\n"
-"    border: 2px solid #5F92B2;\n"
-"}\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 13px;\n"
-"}\n"
-"\n"
-"#before_lbl, #after_lbl {\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"#convert_step1_gb, #convert_step2_gb, #convert_step3_gb{\n"
-"    background-color: rgb(240,240,240); /* 設置QGroupBox的背景顏色 */\n"
-"    border: 2px solid #CCCCCC;          /* 設置邊框顏色和寬度 */\n"
-"    padding: 0 5px;                     /* 標題的內邊距 */\n"
-"    border-radius: 5px;                 /* 設置邊框圓角 */\n"
-"    margin-top: 20px;                   /* 設置頂部邊距以便標題顯示 */\n"
-"}\n"
-"\n"
-"#convert_step1_gb:title, #convert_step2_gb::title, #convert_step3_gb:title {\n"
-"    subcontrol-origin: margin;          /* 標題的基準點是邊距 */\n"
-"    subcontrol-position: top center;    /* 標題的位置 */\n"
-"    background-color: rgb(134,183,200); /* 設置標題背景顏色 */\n"
-"    color: white;                       /* 設置標題文字顏色 */\n"
-"}")
+        self.convert_tab.setStyleSheet("")
         self.convert_tab.setObjectName("convert_tab")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.convert_tab)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
@@ -633,6 +630,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setStretch(1, 1)
         self.verticalLayout_7.addWidget(self.convert_step1_gb)
         self.convert_step2_gb = QtWidgets.QGroupBox(self.convert_tab)
+        self.convert_step2_gb.setEnabled(False)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(11)
@@ -750,6 +748,8 @@ class Ui_MainWindow(object):
         font.setFamily("Arial")
         font.setPointSize(11)
         self.left_rotate_btn.setFont(font)
+        self.left_rotate_btn.setStyleSheet("border-image: url(:/icons/icons/rotate_left_64.png);")
+        self.left_rotate_btn.setText("")
         self.left_rotate_btn.setObjectName("left_rotate_btn")
         self.horizontalLayout_3.addWidget(self.left_rotate_btn)
         self.right_rotate_btn = QtWidgets.QPushButton(self.rotate_gb)
@@ -762,7 +762,8 @@ class Ui_MainWindow(object):
         font.setFamily("Arial")
         font.setPointSize(11)
         self.right_rotate_btn.setFont(font)
-        self.right_rotate_btn.setStyleSheet("")
+        self.right_rotate_btn.setStyleSheet("border-image: url(:/icons/icons/rotate_right_64.png);")
+        self.right_rotate_btn.setText("")
         self.right_rotate_btn.setObjectName("right_rotate_btn")
         self.horizontalLayout_3.addWidget(self.right_rotate_btn)
         self.horizontalLayout_9.addWidget(self.rotate_gb)
@@ -781,29 +782,29 @@ class Ui_MainWindow(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.horizontalLayout_5.addWidget(self.label_3)
-        self.ext_combobox = QtWidgets.QComboBox(self.ext_gb)
+        self.convert_ext_combobox = QtWidgets.QComboBox(self.ext_gb)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.ext_combobox.sizePolicy().hasHeightForWidth())
-        self.ext_combobox.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.convert_ext_combobox.sizePolicy().hasHeightForWidth())
+        self.convert_ext_combobox.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(11)
-        self.ext_combobox.setFont(font)
-        self.ext_combobox.setObjectName("ext_combobox")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.ext_combobox.addItem("")
-        self.horizontalLayout_5.addWidget(self.ext_combobox)
+        self.convert_ext_combobox.setFont(font)
+        self.convert_ext_combobox.setObjectName("convert_ext_combobox")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.convert_ext_combobox.addItem("")
+        self.horizontalLayout_5.addWidget(self.convert_ext_combobox)
         self.horizontalLayout_9.addWidget(self.ext_gb)
         self.verticalLayout_8.addLayout(self.horizontalLayout_9)
         self.preview_gb = QtWidgets.QGroupBox(self.convert_step2_gb)
@@ -888,6 +889,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setStretch(1, 4)
         self.verticalLayout_7.addWidget(self.convert_step2_gb)
         self.convert_step3_gb = QtWidgets.QGroupBox(self.convert_tab)
+        self.convert_step3_gb.setEnabled(False)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(11)
@@ -910,18 +912,18 @@ class Ui_MainWindow(object):
         self.video_save_as_lineedit.setText("")
         self.video_save_as_lineedit.setObjectName("video_save_as_lineedit")
         self.horizontalLayout_4.addWidget(self.video_save_as_lineedit)
-        self.save_as_btn = QtWidgets.QPushButton(self.convert_step3_gb)
+        self.convert_save_as_btn = QtWidgets.QPushButton(self.convert_step3_gb)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.save_as_btn.sizePolicy().hasHeightForWidth())
-        self.save_as_btn.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.convert_save_as_btn.sizePolicy().hasHeightForWidth())
+        self.convert_save_as_btn.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(11)
-        self.save_as_btn.setFont(font)
-        self.save_as_btn.setObjectName("save_as_btn")
-        self.horizontalLayout_4.addWidget(self.save_as_btn)
+        self.convert_save_as_btn.setFont(font)
+        self.convert_save_as_btn.setObjectName("convert_save_as_btn")
+        self.horizontalLayout_4.addWidget(self.convert_save_as_btn)
         self.horizontalLayout_4.setStretch(0, 4)
         self.horizontalLayout_4.setStretch(1, 1)
         self.verticalLayout_6.addLayout(self.horizontalLayout_4)
@@ -936,7 +938,6 @@ class Ui_MainWindow(object):
         self.label_14.setObjectName("label_14")
         self.horizontalLayout_7.addWidget(self.label_14)
         self.convert_btn = QtWidgets.QPushButton(self.convert_step3_gb)
-        self.convert_btn.setEnabled(False)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -992,6 +993,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "VideoDownloader"))
         self.download_step1_gb.setTitle(_translate("MainWindow", "Step 1"))
+        self.url_lineedit.setText(_translate("MainWindow", "https://www.youtube.com/watch?v=7GJOBkIgWHc"))
         self.supported_sites_btn.setText(_translate("MainWindow", "Supported Sites"))
         self.get_info_btn.setText(_translate("MainWindow", "Get Information"))
         self.download_step2_gb.setTitle(_translate("MainWindow", "Step 2"))
@@ -1002,12 +1004,24 @@ class Ui_MainWindow(object):
         self.choose_video_src_btn.setText(_translate("MainWindow", "Choose Video Source"))
         self.lbl_4.setText(_translate("MainWindow", "Video ID:"))
         self.subtitle_gb.setTitle(_translate("MainWindow", "Subtitle"))
-        self.choose_subtitle_lang_format_btn.setText(_translate("MainWindow", "Choose Language / Format"))
+        self.choose_subtitle_btn.setText(_translate("MainWindow", "Choose Subtitles"))
         self.lbl_5.setText(_translate("MainWindow", "Subtitles:"))
         self.lbl_6.setText(_translate("MainWindow", "Auto Subtitles:"))
         self.download_step3_gb.setTitle(_translate("MainWindow", "Step 3"))
-        self.path_btn.setText(_translate("MainWindow", "Save As..."))
-        self.download_btn.setText(_translate("MainWindow", "Download"))
+        self.download_save_as_btn.setText(_translate("MainWindow", "Save As..."))
+        self.label_9.setText(_translate("MainWindow", "File Extension:"))
+        self.download_ext_combobox.setItemText(0, _translate("MainWindow", "mp4"))
+        self.download_ext_combobox.setItemText(1, _translate("MainWindow", "m4v"))
+        self.download_ext_combobox.setItemText(2, _translate("MainWindow", "mkv"))
+        self.download_ext_combobox.setItemText(3, _translate("MainWindow", "webm"))
+        self.download_ext_combobox.setItemText(4, _translate("MainWindow", "avi"))
+        self.download_ext_combobox.setItemText(5, _translate("MainWindow", "mov"))
+        self.download_ext_combobox.setItemText(6, _translate("MainWindow", "wmv"))
+        self.download_ext_combobox.setItemText(7, _translate("MainWindow", "flv"))
+        self.download_ext_combobox.setItemText(8, _translate("MainWindow", "asf"))
+        self.download_ext_combobox.setItemText(9, _translate("MainWindow", "avchd"))
+        self.download_ext_combobox.setItemText(10, _translate("MainWindow", "vob"))
+        self.download_btn.setText(_translate("MainWindow", "Download !"))
         self.main_tabwidget.setTabText(self.main_tabwidget.indexOf(self.download_tab), _translate("MainWindow", "Download"))
         self.convert_step1_gb.setTitle(_translate("MainWindow", "Step 1"))
         self.choose_file_btn.setText(_translate("MainWindow", "Choose File"))
@@ -1019,27 +1033,25 @@ class Ui_MainWindow(object):
         self.vertical_checkbox.setText(_translate("MainWindow", "Vertical"))
         self.horizontal_checkbox.setText(_translate("MainWindow", "Horizontal"))
         self.rotate_gb.setTitle(_translate("MainWindow", "Rotate"))
-        self.left_rotate_btn.setText(_translate("MainWindow", "Left"))
-        self.right_rotate_btn.setText(_translate("MainWindow", "Right"))
         self.ext_gb.setTitle(_translate("MainWindow", "File Extension"))
         self.label_3.setText(_translate("MainWindow", "extension: "))
-        self.ext_combobox.setItemText(0, _translate("MainWindow", "mp4"))
-        self.ext_combobox.setItemText(1, _translate("MainWindow", "m4v"))
-        self.ext_combobox.setItemText(2, _translate("MainWindow", "mkv"))
-        self.ext_combobox.setItemText(3, _translate("MainWindow", "webm"))
-        self.ext_combobox.setItemText(4, _translate("MainWindow", "avi"))
-        self.ext_combobox.setItemText(5, _translate("MainWindow", "mov"))
-        self.ext_combobox.setItemText(6, _translate("MainWindow", "wmv"))
-        self.ext_combobox.setItemText(7, _translate("MainWindow", "flv"))
-        self.ext_combobox.setItemText(8, _translate("MainWindow", "asf"))
-        self.ext_combobox.setItemText(9, _translate("MainWindow", "avchd"))
-        self.ext_combobox.setItemText(10, _translate("MainWindow", "vob"))
+        self.convert_ext_combobox.setItemText(0, _translate("MainWindow", "mp4"))
+        self.convert_ext_combobox.setItemText(1, _translate("MainWindow", "m4v"))
+        self.convert_ext_combobox.setItemText(2, _translate("MainWindow", "mkv"))
+        self.convert_ext_combobox.setItemText(3, _translate("MainWindow", "webm"))
+        self.convert_ext_combobox.setItemText(4, _translate("MainWindow", "avi"))
+        self.convert_ext_combobox.setItemText(5, _translate("MainWindow", "mov"))
+        self.convert_ext_combobox.setItemText(6, _translate("MainWindow", "wmv"))
+        self.convert_ext_combobox.setItemText(7, _translate("MainWindow", "flv"))
+        self.convert_ext_combobox.setItemText(8, _translate("MainWindow", "asf"))
+        self.convert_ext_combobox.setItemText(9, _translate("MainWindow", "avchd"))
+        self.convert_ext_combobox.setItemText(10, _translate("MainWindow", "vob"))
         self.preview_gb.setTitle(_translate("MainWindow", "Preview"))
-        self.before_size_lbl.setText(_translate("MainWindow", "Before: "))
-        self.after_size_lbl.setText(_translate("MainWindow", "After: "))
+        self.before_size_lbl.setText(_translate("MainWindow", "Before"))
+        self.after_size_lbl.setText(_translate("MainWindow", "After"))
         self.convert_step3_gb.setTitle(_translate("MainWindow", "Step 3"))
-        self.save_as_btn.setText(_translate("MainWindow", "Save As..."))
-        self.convert_btn.setText(_translate("MainWindow", "Convert"))
+        self.convert_save_as_btn.setText(_translate("MainWindow", "Save As..."))
+        self.convert_btn.setText(_translate("MainWindow", "Convert !"))
         self.main_tabwidget.setTabText(self.main_tabwidget.indexOf(self.convert_tab), _translate("MainWindow", "Convert"))
         self.zh_tw_action.setText(_translate("MainWindow", "中文"))
         self.en_action.setText(_translate("MainWindow", "English"))

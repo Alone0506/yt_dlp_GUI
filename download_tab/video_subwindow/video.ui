@@ -20,11 +20,12 @@
    <string>Video Source</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
+   <string notr="true">/*
+QWidget {
     background-color: #F0F4F4;
     color: #2E7D32;
 }
-
+*/
 /* QLabel settings */
 QLabel {
     color: #2E7D32;
@@ -52,10 +53,6 @@ QTableWidget {
     selection-background-color: #A5D6A7;
     border: 1px solid #81C784;
 }
-QTableWidget::item {
-    border: 1px solid #81C784;
-    padding: 2px;
-}
 QTableWidget::item::selected{
     color:white;
     background:#609d78;
@@ -65,7 +62,9 @@ QHeaderView::section {
     color: white;
     padding: 4px;
     border: 1px solid #81C784;
-}</string>
+}
+
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -189,6 +188,9 @@ QHeaderView::section {
        <family>Arial</family>
        <pointsize>11</pointsize>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>90</number>
@@ -360,8 +362,8 @@ QHeaderView::section {
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0" rowspan="2">
       <widget class="QLabel" name="default_lbl">
        <property name="font">
         <font>
@@ -374,10 +376,32 @@ QHeaderView::section {
        </property>
       </widget>
      </item>
-     <item>
+     <item row="0" column="1">
+      <widget class="QRadioButton" name="simple_rbtn">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Simple Mode</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2" rowspan="2">
       <widget class="QPushButton" name="ok_btn">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -393,13 +417,61 @@ QHeaderView::section {
        </property>
       </widget>
      </item>
-     <item>
+     <item row="0" column="3" rowspan="2">
       <widget class="QLabel" name="label">
        <property name="font">
         <font>
          <family>Arial</family>
          <pointsize>11</pointsize>
         </font>
+       </property>
+       <property name="text">
+        <string>default:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QRadioButton" name="detailed_rbtn">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Detail Mode</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4" rowspan="2">
+      <widget class="QCheckBox" name="checkBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QCheckBox::indicator {
+	background-color: #81c784;
+	width: 20px;
+	height: 20px;
+}
+</string>
        </property>
        <property name="text">
         <string/>
