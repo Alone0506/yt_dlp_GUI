@@ -47,19 +47,19 @@
 ## Usage
 #### Download Video
 1. 執行video_downloader.exe
-2. 在step1的地方貼上網址後按下"Get Information"按鈕
-3. (可選)想下載影片的話就按下"Choose Video Source"按鈕, 選完後你的選擇的ID會出現在下方, 不選擇的話預設會是最佳的畫質/音質.
-4. (可選)想下載字幕的話就按下"Choose Subtitles"按鈕選擇想要的字幕, 選完後結果會出現在下方.
-5. 選擇存放位置與格式後點擊"下載"即可
+2. 在step1的地方貼上網址後按下`Get Information`按鈕
+3. (可選)想下載影片的話就按下`Choose Video Source`按鈕, 選完後你的選擇的ID會出現在下方, 不選擇的話預設會是最佳的畫質/音質.
+4. (可選)想下載字幕的話就按下`Choose Subtitles`按鈕選擇想要的字幕, 選完後結果會出現在下方.
+5. 選擇存放位置與格式後點擊`Download`即可
 
 ***有些影片受限於編碼模式, 無法及時轉換成指定的格式, 請下載後到Convert頁面轉換格式**
 
 #### Convert Video
-1. 執行video_downloader.exe
+1. 執行`video_downloader.exe`
 2. 選擇影片檔案, 副檔名支援mp4, m4v, mkv, webm, avi, mov, wmv, flv, asf, avchd, vob共11種格式.
 3. (可選) 選擇Resize, Flip或Rotate來編輯影片, 對比圖會顯示於下方
 4. 選擇檔案格式
-5. 選擇存放位置後點擊"Convert"按鈕即可.
+5. 選擇存放位置後點擊`Convert`按鈕即可.
 
 ## Q&A
 ▶ 出現 `Could not find QtWebEngineProcess.exe`錯誤: 確保exe上的路徑皆為英文.
