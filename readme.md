@@ -1,40 +1,37 @@
-# Video Downloader
-
+Video Downloader
 <p align="center">
-
-<img src="https://img.shields.io/badge/made%20by-Alone-blue.svg" >
-
+<img src="https://img.shields.io/badge/made%20by-Alone-blue.svg">
 <img src="https://img.shields.io/badge/python-3.11.9-green.svg">
-  
 <img src="https://img.shields.io/badge/license-GPL3.0-green.svg">
- 
 <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" >
-
 </p>
 
+- [English](./readme.md) | [中文](./readme_zh_TW.md)
+
 ![image](https://github.com/user-attachments/assets/6da709e7-0c95-41a3-9fa5-38bb2322fdf9)
-- 支援 Youttube, Twitch, CNN, Bilibili...等各大網站, 詳細網站: [Supported sites](https://github.com/yt-dlp/yt-dlp/blob/2024.07.16/supportedsites.md).
-- 支援解析度無上限, 720p, 1080p, 2k, 4k, 8k...等都可以.
-- 會自動幫你選擇最優質的Video & Audio 格式, 直接無腦下載!
-- 支援下載時自動轉換成mp4, m4v, mkv, webm, avi...等常見的格式
-- 也可自行根據fps, resolution, filesize, protocol, vcodec, acodec等下載自己需要的格式.
+- Supports major websites like YouTube, Twitch, CNN, Bilibili, etc. For detailed sites: [Supported sites](https://github.com/yt-dlp/yt-dlp/blob/2024.07.16/supportedsites.md).
+- Supports unlimited resolution, including 720p, 1080p, 2k, 4k, 8k, etc.
+- Automatically selects the best Video & Audio format for you, just download without any hassle!
+- Supports automatic conversion to common formats such as mp4, m4v, mkv, webm, avi, etc. during download.
+- You can also manually download the format you need based on fps, resolution, filesize, protocol, vcodec, acodec, etc.
 ![image](https://github.com/user-attachments/assets/9e24ff40-d984-43e8-a48a-0c21957c58c2)
 
 ---
-- 如果想下載CC字幕也可以一併下載, 原生字幕或機翻字幕都可以.
-- 支援等json3, srv1, srv2, srv3, ttml, vtt等常見字幕格式, 並且可一次選擇多種字幕下載.
+
+- If you want to download CC subtitles, you can download them together, including native or machine-translated subtitles.
+- Supports common subtitle formats such as json3, srv1, srv2, srv3, ttml, vtt, and allows multiple subtitle downloads at once.
 ![image](https://github.com/user-attachments/assets/a718e73d-991e-4c9d-b076-1522322a300c)
 
 ---
 
-- 如果想要更改影片格式或進行簡單的編輯, 也有提供Resize, Flip, Rotate, Change Extension等功能.
-- 影片編輯時也提供預覽圖可以預覽.
+- If you want to change the video format or perform simple editing, we provide Resize, Flip, Rotate, Change Extension functions.
+- Preview images are also available during video editing.
 ![image](https://github.com/user-attachments/assets/782d08f7-acb0-4155-ab7f-d1159e00d319)
 
 ## Download
-可以在[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Alone/video_downloader)](https://github.com/Alone/video_downloader/releases/latest)下載預先編譯好的版本.
+You can download the pre-compiled version from [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Alone/video_downloader)](https://github.com/Alone/video_downloader/releases/latest).
 
-解壓縮後檔案結構:
+After extracting the files, the directory structure is as follows:
 ```tex
 |-video_downloader
 |    |_ _internal
@@ -42,31 +39,31 @@
 |       video_downloader.exe
 |
 ```
-執行`video_downloader.exe`即可.
+Run `video_downloader.exe`.
 
 ## Usage
 #### Download Video
-1. 執行video_downloader.exe
-2. 在step1的地方貼上網址後按下`Get Information`按鈕
-3. (可選)想下載影片的話就按下`Choose Video Source`按鈕, 選完後你的選擇的ID會出現在下方, 不選擇的話預設會是最佳的畫質/音質.
-4. (可選)想下載字幕的話就按下`Choose Subtitles`按鈕選擇想要的字幕, 選完後結果會出現在下方.
-5. 選擇存放位置與格式後點擊`Download`即可
+1. Run video_downloader.exe
+2. Paste the URL in step 1 and click the Get Information button
+3. (Optional) To download the video, click the `Choose Video Source` button. After selecting, the chosen ID will appear below. If not selected, the default will be the best quality/audio.
+4. (Optional) To download subtitles, click the `Choose Subtitles` button and select the desired subtitles. The results will appear below after selection.
+5. Choose the save location and format, then click `Download`.
 
-***有些影片受限於編碼模式, 無法及時轉換成指定的格式, 請下載後到Convert頁面轉換格式**
+***Some videos, due to encoding restrictions, cannot be converted to the specified format immediately. Please download them first and then convert the format on the Convert page.**
 
 #### Convert Video
-1. 執行`video_downloader.exe`
-2. 選擇影片檔案, 副檔名支援mp4, m4v, mkv, webm, avi, mov, wmv, flv, asf, avchd, vob共11種格式.
-3. (可選) 選擇Resize, Flip或Rotate來編輯影片, 對比圖會顯示於下方
-4. 選擇檔案格式
-5. 選擇存放位置後點擊`Convert`按鈕即可.
+1. Run `video_downloader.exe`.
+2. Choose the video file. Supported extensions are `mp4`, `m4v`, `mkv`, `webm`, `avi`, `mov`, `wmv`, `flv`, `asf`, `avchd`(11 formats in total).
+3. (Optional) Choose Resize, Flip, or Rotate to edit the video. The comparison image will be displayed below.
+4. Choose the file format.
+5. Choose the save location and click the `Convert` button.
 
-#### compile
-▶ 需要下載ffmpeg並與main.py放在同一個目錄, 在release, 下載ffmpeg的方法: [Inatall FFmpeg (windows)](https://hackmd.io/@Alone0506/rJp3USqm0)
+## Compile
+▶ You need to download ffmpeg and place it in the same directory as main.py. In the release, download ffmpeg as follows: [Inatall FFmpeg (windows)](https://hackmd.io/@Alone0506/rJp3USqm0).
 
 ## Q&A
-▶ 出現 `Could not find QtWebEngineProcess.exe`錯誤: 確保exe上的路徑皆為英文.
-▶ 出現 `ERROR: Postprocessing: Conversion failed!`: 因影片的編碼格式不支援, 所以無法在合併聲音與影像時轉檔, 可以嘗試先以mp4或webm格式下載後再到Convert頁面轉檔.
+▶ Error `Could not find QtWebEngineProcess.exe`: Ensure that all paths on the exe are in English.
+▶ Error `ERROR: Postprocessing: Conversion failed!`: Due to unsupported video encoding format, the file cannot be converted while merging audio and video. Try downloading in `mp4` or `webm` format first, then convert on the Convert page.
 
 ## Issue
-如果有遇到問題可以到[Issue](https://github.com/Alone0506/video_downloader/issues)提出問題.
+If you encounter any problems, you can raise an issue at [Issue](https://github.com/Alone0506/video_downloader/issues).
