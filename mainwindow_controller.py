@@ -1,7 +1,5 @@
-import sys
-
 from PyQt5.QtGui import QResizeEvent
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QMainWindow
 
 from mainwindow_ui import Ui_MainWindow
 from download_tab.download_tab import DownloadTab
@@ -39,11 +37,3 @@ class MainWindow(QMainWindow):
     def resizeEvent(self, event: QResizeEvent) -> None:
         self.download_tab.resize_thumbnail(event)
         self.convert_tab.resize_preview(event)
-        
-
-if __name__ == '__main__':
-    import sys
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec_())
