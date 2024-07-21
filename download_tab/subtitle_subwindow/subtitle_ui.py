@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\wii03\Desktop\yt_dlp2\download_tab\subtitle_subwindow\subtitle.ui'
+# Form implementation generated from reading ui file 'c:\Users\wii03\Desktop\video_downloader\download_tab\subtitle_subwindow\subtitle.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -76,6 +76,10 @@ class Ui_Form(object):
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
         self.subtitles_table = QtWidgets.QTableWidget(Form)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.subtitles_table.setFont(font)
         self.subtitles_table.setObjectName("subtitles_table")
         self.subtitles_table.setColumnCount(8)
         self.subtitles_table.setRowCount(0)
@@ -98,10 +102,18 @@ class Ui_Form(object):
         self.subtitles_table.horizontalHeader().setMinimumSectionSize(25)
         self.verticalLayout.addWidget(self.subtitles_table)
         self.label_2 = QtWidgets.QLabel(Form)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.label_2.setFont(font)
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.verticalLayout.addWidget(self.label_2)
         self.auto_subtitles_table = QtWidgets.QTableWidget(Form)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.auto_subtitles_table.setFont(font)
         self.auto_subtitles_table.setObjectName("auto_subtitles_table")
         self.auto_subtitles_table.setColumnCount(8)
         self.auto_subtitles_table.setRowCount(0)
@@ -131,7 +143,6 @@ class Ui_Form(object):
         font.setFamily("Arial")
         font.setPointSize(11)
         self.label_4.setFont(font)
-        self.label_4.setText("")
         self.label_4.setObjectName("label_4")
         self.horizontalLayout.addWidget(self.label_4)
         self.ok_btn = QtWidgets.QPushButton(Form)
@@ -141,14 +152,8 @@ class Ui_Form(object):
         self.ok_btn.setFont(font)
         self.ok_btn.setObjectName("ok_btn")
         self.horizontalLayout.addWidget(self.ok_btn)
-        self.label_3 = QtWidgets.QLabel(Form)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
-        self.label_3.setFont(font)
-        self.label_3.setText("")
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout.addWidget(self.label_3)
+        self.horizontalLayout.setStretch(0, 2)
+        self.horizontalLayout.setStretch(1, 1)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(Form)
@@ -191,4 +196,5 @@ class Ui_Form(object):
         item.setText(_translate("Form", "ttml"))
         item = self.auto_subtitles_table.horizontalHeaderItem(7)
         item.setText(_translate("Form", "vtt"))
+        self.label_4.setText(_translate("Form", "You can select no subtitle or select multiple subtitles."))
         self.ok_btn.setText(_translate("Form", "ok !"))

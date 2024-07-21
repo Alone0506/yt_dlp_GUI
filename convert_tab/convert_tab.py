@@ -24,7 +24,7 @@ class ConvertTab:
             return
         support_exts = [self.ui.convert_ext_combobox.itemText(i) for i in range(self.ui.convert_ext_combobox.count())]
         if Path(video_path).suffix.lstrip('.') not in support_exts:
-            QMessageBox.critical(None, 'EXTENSION ERROR', 'This file is not supported.')
+            QMessageBox.critical(None, 'FILE EXTENSION ERROR', 'This format is not supported.')
             return
         self.__set_convert_tab(video_path)
         

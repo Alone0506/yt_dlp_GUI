@@ -64,6 +64,13 @@ QPushButton:hover:pressed{
 	border-radius:5px;
 	color:white;
 }
+/* 禁用狀態下的樣式 */
+QPushButton:disabled {
+	background-color: rgb(225,225,225); /* 禁用狀態下的背景色 */
+	border: 2px solid #A0A0A0;         /* 禁用狀態下的邊框色 */
+	border-radius: 5px;
+	color: #808080;                    /* 禁用狀態下的文字顏色 */
+}
 
 
 
@@ -83,6 +90,11 @@ QComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 13px;
+}
+QComboBox:disabled {
+    background-color: rgb(225,225,225);
+    color: #808080;                    /* 禁用狀態下的文字顏色 */
+    border: 2px solid #A0A0A0;         /* 禁用狀態下的邊框色 */
 }</string>
    </property>
    <layout class="QGridLayout" name="gridLayout_6">
@@ -476,6 +488,15 @@ QComboBox::drop-down {
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
+                  </property>
+                  <property name="toolTip">
+                   <string/>
+                  </property>
+                  <property name="statusTip">
+                   <string/>
+                  </property>
+                  <property name="whatsThis">
+                   <string/>
                   </property>
                   <property name="text">
                    <string>Choose Video Source</string>

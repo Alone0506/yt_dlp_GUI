@@ -61,6 +61,13 @@ class Ui_MainWindow(object):
 "    border-radius:5px;\n"
 "    color:white;\n"
 "}\n"
+"/* 禁用狀態下的樣式 */\n"
+"QPushButton:disabled {\n"
+"    background-color: rgb(225,225,225); /* 禁用狀態下的背景色 */\n"
+"    border: 2px solid #A0A0A0;         /* 禁用狀態下的邊框色 */\n"
+"    border-radius: 5px;\n"
+"    color: #808080;                    /* 禁用狀態下的文字顏色 */\n"
+"}\n"
 "\n"
 "\n"
 "\n"
@@ -80,6 +87,11 @@ class Ui_MainWindow(object):
 "    subcontrol-origin: padding;\n"
 "    subcontrol-position: top right;\n"
 "    width: 13px;\n"
+"}\n"
+"QComboBox:disabled {\n"
+"    background-color: rgb(225,225,225);\n"
+"    color: #808080;                    /* 禁用狀態下的文字顏色 */\n"
+"    border: 2px solid #A0A0A0;         /* 禁用狀態下的邊框色 */\n"
 "}")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.centralwidget)
@@ -350,6 +362,9 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.choose_video_src_btn.setFont(font)
+        self.choose_video_src_btn.setToolTip("")
+        self.choose_video_src_btn.setStatusTip("")
+        self.choose_video_src_btn.setWhatsThis("")
         self.choose_video_src_btn.setObjectName("choose_video_src_btn")
         self.gridLayout_3.addWidget(self.choose_video_src_btn, 0, 0, 1, 2)
         self.lbl_4 = QtWidgets.QLabel(self.video_gb)

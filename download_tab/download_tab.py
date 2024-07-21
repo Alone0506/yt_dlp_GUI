@@ -17,7 +17,7 @@ class DownloadTab:
     def __init__(self, main_ui: Ui_MainWindow):
         super().__init__()
         self.ui = main_ui
-        self.pixmap = QPixmap()
+        self.thumbnail = QPixmap()
         self.downloader = Downloader()
         self.subtitles_choose: dict[str, list[str]] = dict()
         self.video_subwindow = VideoSubWindow()
@@ -73,12 +73,12 @@ class DownloadTab:
         self.downloader.video_thread.download(url, path, video_ids, video_ext)
         
     def resize_thumbnail(self, event: QResizeEvent):
-        if self.pixmap.isNull():
+        if self.thumbnail.isNull():
             return
         # Need some space to allow thumbnail to shrink.
         lbl_width = self.ui.thumbnail_lbl.width()
         lbl_height = self.ui.thumbnail_lbl.height()
-        new_pixmap = self.pixmap.scaled(lbl_width - 5, lbl_height - 5, aspectRatioMode=Qt.KeepAspectRatio)
+        new_pixmap = self.thumbnail.scaled(lbl_width - 5, lbl_height - 5, aspectRatioMode=Qt.KeepAspectRatio)
         self.ui.thumbnail_lbl.setPixmap(new_pixmap)
         
         
@@ -88,38 +88,38 @@ class DownloadTab:
             return
         
         def get_id_infos(formats: list[dict[str, str]]) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
-            video_audio_srcs: list[dict[str, str]] = []
-            video_srcs: list[dict[str, str]] = []
-            audio_srcs: list[dict[str, str]] = []
+            video_audio_infos: list[dict[str, str]] = []
+            video_infos: list[dict[str, str]] = []
+            audio_infos: list[dict[str, str]] = []
             
             for format in formats:
                 vcodec = format.get('vcodec', 'none')
                 acodec = format.get('acodec', 'none')
                 if vcodec != 'none' and acodec != 'none':
-                    video_audio_srcs.append(format)
+                    video_audio_infos.append(format)
                 elif vcodec != 'none':
-                    video_srcs.append(format)
+                    video_infos.append(format)
                 elif acodec != 'none':
-                    audio_srcs.append(format)
-            return video_audio_srcs, video_srcs, audio_srcs
+                    audio_infos.append(format)
+            return video_audio_infos, video_infos, audio_infos
         
-        video_audio_srcs, video_srcs, audio_srcs = get_id_infos(info.get('formats', []))
+        video_audio_infos, video_infos, audio_infos = get_id_infos(info.get('formats', []))
         # setting mainwindow
         try:
             res = requests.get(info['thumbnail'])
             img = QImage.fromData(res.content)
         except:
             img = QImage.fromData(b"")
-        self.pixmap = QPixmap.fromImage(img)
+        self.thumbnail = QPixmap.fromImage(img)
         self.resize_thumbnail(None)
         self.ui.video_title_lbl.setText(info['title'])
         self.ui.video_author_lbl.setText(info['uploader_id'])
         self.ui.video_length_lbl.setText(info['duration_string'])
         
-        # setting subwindows
+        # setting video & subtitle subwindows
         best_ids = [i.strip() for i in info['format_id'].split('+')]
         self.ui.video_id_lbl.setText(info['format_id'])
-        self.video_subwindow.setting_tables(video_audio_srcs, video_srcs, audio_srcs, best_ids)
+        self.video_subwindow.setting_tables(video_audio_infos, video_infos, audio_infos, best_ids)
         self.subtitle_subwindow.setting_tables(info.get('subtitles', {}), info.get('automatic_captions', {}))
         
     def show_video_audio_src(self, video_audio_src: str):
