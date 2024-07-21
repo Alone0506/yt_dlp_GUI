@@ -29,7 +29,7 @@
 
 - 如果想要更改影片格式或進行簡單的編輯, 也有提供Resize, Flip, Rotate, Change Extension等功能.
 - 影片編輯時也提供預覽圖可以預覽.
-![image](https://hackmd.io/_uploads/BkntCSqOA.png)
+![image](https://github.com/user-attachments/assets/782d08f7-acb0-4155-ab7f-d1159e00d319)
 
 ## Download
 可以在[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Alone/video_downloader)](https://github.com/Alone/video_downloader/releases/latest)下載預先編譯好的版本.
