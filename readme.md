@@ -12,17 +12,19 @@
 
 </p>
 
+![image](https://github.com/user-attachments/assets/6da709e7-0c95-41a3-9fa5-38bb2322fdf9)
 - 支援 Youttube, Twitch, CNN, Bilibili...等各大網站, 詳細網站: [Supported sites](https://github.com/yt-dlp/yt-dlp/blob/2024.07.16/supportedsites.md).
 - 支援解析度無上限, 720p, 1080p, 2k, 4k, 8k...等都可以.
-- 會自動幫你選擇最優質的Video & Audio 格式, 直接無腦下載!![image](https://hackmd.io/_uploads/SyzuiUc_A.png)
+- 會自動幫你選擇最優質的Video & Audio 格式, 直接無腦下載!
 - 支援下載時自動轉換成mp4, m4v, mkv, webm, avi...等常見的格式
 - 也可自行根據fps, resolution, filesize, protocol, vcodec, acodec等下載自己需要的格式.
-![image](https://hackmd.io/_uploads/S119qScuR.png)
+![image](https://github.com/user-attachments/assets/9e24ff40-d984-43e8-a48a-0c21957c58c2)
 
 ---
 - 如果想下載CC字幕也可以一併下載, 原生字幕或機翻字幕都可以.
 - 支援等json3, srv1, srv2, srv3, ttml, vtt等常見字幕格式, 並且可一次選擇多種字幕下載.
-![image](https://hackmd.io/_uploads/Hk_cpS9_C.png)
+![image](https://github.com/user-attachments/assets/a718e73d-991e-4c9d-b076-1522322a300c)
+
 ---
 
 - 如果想要更改影片格式或進行簡單的編輯, 也有提供Resize, Flip, Rotate, Change Extension等功能.
