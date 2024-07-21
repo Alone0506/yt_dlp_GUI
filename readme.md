@@ -61,6 +61,9 @@
 4. 選擇檔案格式
 5. 選擇存放位置後點擊`Convert`按鈕即可.
 
+#### compile
+▶ 需要下載ffmpeg並與main.py放在同一個目錄, 在release, 下載ffmpeg的方法: [Inatall FFmpeg (windows)](https://hackmd.io/@Alone0506/rJp3USqm0)
+
 ## Q&A
 ▶ 出現 `Could not find QtWebEngineProcess.exe`錯誤: 確保exe上的路徑皆為英文.
 ▶ 出現 `ERROR: Postprocessing: Conversion failed!`: 因影片的編碼格式不支援, 所以無法在合併聲音與影像時轉檔, 可以嘗試先以mp4或webm格式下載後再到Convert頁面轉檔.
