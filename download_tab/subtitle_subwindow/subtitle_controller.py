@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-
 from collections import defaultdict
+
+from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QTableWidget, QHeaderView
+from PyQt5.QtCore import pyqtSignal, Qt, pyqtSlot
+from PyQt5.QtGui import QCloseEvent
+
 from .subtitle_ui import Ui_Form as Ui_Subtitle_Form
 
 

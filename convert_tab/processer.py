@@ -3,6 +3,7 @@ from pathlib import Path
 
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import QProcess
+
 from moviepy.editor import VideoFileClip, vfx
 
 class VideoProcesser:

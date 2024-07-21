@@ -2,9 +2,9 @@ from pathlib import Path
 
 import requests
 import markdown
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QImage, QPixmap, QResizeEvent
+from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QLabel, QMessageBox, QVBoxLayout
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 
 from .downloader import Downloader

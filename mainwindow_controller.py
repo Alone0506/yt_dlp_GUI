@@ -1,8 +1,7 @@
 import sys
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QResizeEvent
+from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from mainwindow_ui import Ui_MainWindow
 from download_tab.download_tab import DownloadTab

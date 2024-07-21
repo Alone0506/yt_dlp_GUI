@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
+from PyQt5.QtWidgets import QHeaderView, QHeaderView, QTableWidget, QTableWidgetItem, QWidget
+from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt
+from PyQt5.QtGui import QBrush, QCloseEvent, QColor
 from yt_dlp.YoutubeDL import format_bytes
 
 from .video_ui import Ui_Form as Ui_Video_Form
