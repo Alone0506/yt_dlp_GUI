@@ -160,6 +160,7 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.url_lineedit.setFont(font)
+        self.url_lineedit.setText("")
         self.url_lineedit.setObjectName("url_lineedit")
         self.horizontalLayout_2.addWidget(self.url_lineedit)
         self.supported_sites_btn = QtWidgets.QPushButton(self.download_step1_gb)
@@ -1008,7 +1009,6 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "VideoDownloader"))
         self.download_step1_gb.setTitle(_translate("MainWindow", "Step 1"))
-        self.url_lineedit.setText(_translate("MainWindow", "https://www.youtube.com/watch?v=7GJOBkIgWHc"))
         self.supported_sites_btn.setText(_translate("MainWindow", "Supported Sites"))
         self.get_info_btn.setText(_translate("MainWindow", "Get Information"))
         self.download_step2_gb.setTitle(_translate("MainWindow", "Step 2"))

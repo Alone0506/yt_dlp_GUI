@@ -188,7 +188,7 @@ QComboBox:disabled {
               </font>
              </property>
              <property name="text">
-              <string>https://www.youtube.com/watch?v=7GJOBkIgWHc</string>
+              <string/>
              </property>
             </widget>
            </item>
