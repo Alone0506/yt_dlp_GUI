@@ -112,9 +112,9 @@ class DownloadTab:
             img = QImage.fromData(b"")
         self.thumbnail = QPixmap.fromImage(img)
         self.resize_thumbnail(None)
-        self.ui.video_title_lbl.setText(info['title'])
-        self.ui.video_author_lbl.setText(info['uploader_id'])
-        self.ui.video_length_lbl.setText(info['duration_string'])
+        self.ui.video_title_lbl.setText(info.get('title', ''))
+        self.ui.video_author_lbl.setText(info.get('uploader_id', ''))
+        self.ui.video_length_lbl.setText(info.get('duration_string', ''))
         
         # setting video & subtitle subwindows
         best_ids = [i.strip() for i in info['format_id'].split('+')]
